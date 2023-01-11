@@ -13,6 +13,12 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import br.com.events.msauth.application.config.apiKey.exception.InvalidApiKeyException;
 import br.com.events.msauth.application.config.apiKey.exception.NoApiKeyReceivedException;
 
+/**
+ * This class makes the request filtering so only consumers with allowed api-key can access this microservice's
+ * features
+ *
+ * @author Gabriel Guimarães de Almeida
+ */
 @Component
 public class ApiKeyInterceptor implements HandlerInterceptor {
 
@@ -28,7 +34,7 @@ public class ApiKeyInterceptor implements HandlerInterceptor {
     ) throws Exception {
         var apiKey = Optional.ofNullable(request.getHeader(apiKeyHeader))
             .orElseThrow(NoApiKeyReceivedException::new);
-        if (validApiKeys.contains(apiKey)){
+        if (validApiKeys.contains(apiKey)) {
             return HandlerInterceptor.super.preHandle(request, response, handler);
         }
         throw new InvalidApiKeyException();

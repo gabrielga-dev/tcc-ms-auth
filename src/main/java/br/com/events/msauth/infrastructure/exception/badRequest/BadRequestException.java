@@ -4,6 +4,11 @@ import org.springframework.http.HttpStatus;
 
 import br.com.events.msauth.infrastructure.exception.BusinessException;
 
+/**
+ * This exception will be extended by any other exception that needs to return a 400 http status
+ *
+ * @author Gabriel Guimarães de Almeida
+ */
 public class BadRequestException extends BusinessException {
 
     private static final long serialVersionUID = 1L;

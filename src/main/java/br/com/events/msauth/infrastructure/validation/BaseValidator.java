@@ -1,6 +1,11 @@
 package br.com.events.msauth.infrastructure.validation;
 
-public interface BaseValidator <T>{
+/**
+ * This interface dictates which methods are needed to implement when a validator is needed
+ *
+ * @author Gabriel Guimarães de Almeida
+ */
+public interface BaseValidator<T> {
 
     void validate(T toValidate);
 }

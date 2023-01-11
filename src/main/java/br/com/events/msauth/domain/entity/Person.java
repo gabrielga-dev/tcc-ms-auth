@@ -12,6 +12,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * This class represents the person's database table
+ *
+ * @author Gabriel Guimarães de Almeida
+ */
 @Getter
 @Setter
 @Entity

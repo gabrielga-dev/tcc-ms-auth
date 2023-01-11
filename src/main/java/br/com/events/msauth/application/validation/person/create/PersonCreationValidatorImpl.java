@@ -9,12 +9,17 @@ import br.com.events.msauth.infrastructure.validation.person.create.PersonCreati
 import br.com.events.msauth.infrastructure.validation.person.create.PersonCreationValidator;
 import lombok.RequiredArgsConstructor;
 
+/**
+ * This class implements {@link PersonCreationValidator} and applies all needed validations for {@link CreatePersonForm}
+ * incoming object
+ *
+ * @author Gabriel Guimarães de Almeida
+ */
 @Component
 @RequiredArgsConstructor
 public class PersonCreationValidatorImpl implements PersonCreationValidator {
 
     private final List<PersonCreationValidation> validations;
-
 
     @Override
     public void validate(final CreatePersonForm toValidate) {

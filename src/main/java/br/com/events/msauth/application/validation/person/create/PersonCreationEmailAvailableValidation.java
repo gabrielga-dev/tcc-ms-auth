@@ -8,6 +8,12 @@ import br.com.events.msauth.domain.repository.PersonRepository;
 import br.com.events.msauth.infrastructure.validation.person.create.PersonCreationValidation;
 import lombok.RequiredArgsConstructor;
 
+/**
+ * This class implements the {@link PersonCreationValidation} and validate if the incoming email is available. If it
+ * isn't, then throws a {@link PersonCreationEmailAvailableException}.
+ *
+ * @author Gabriel Guimarães de Almeida
+ */
 @Component
 @RequiredArgsConstructor
 public class PersonCreationEmailAvailableValidation implements PersonCreationValidation {

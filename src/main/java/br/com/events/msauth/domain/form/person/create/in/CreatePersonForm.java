@@ -1,7 +1,6 @@
 package br.com.events.msauth.domain.form.person.create.in;
 
 import javax.validation.constraints.Email;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -12,6 +11,11 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * This class holds every needed data for creating a new person and it's validations
+ *
+ * @author Gabriel Giumarães de Almeida
+ */
 @Getter
 @Setter
 @Builder

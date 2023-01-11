@@ -12,6 +12,11 @@ import br.com.events.msauth.infrastructure.useCase.person.CreatePersonUseCase;
 import br.com.events.msauth.infrastructure.validation.person.create.PersonCreationValidator;
 import lombok.RequiredArgsConstructor;
 
+/**
+ * This class implements the {@link CreatePersonUseCase} interface to create a new person
+ *
+ * @author Gabriel Guimarães de Almeida
+ */
 @Component
 @RequiredArgsConstructor
 public class CreatePersonUseCaseImpl implements CreatePersonUseCase {

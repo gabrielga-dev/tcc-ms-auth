@@ -7,6 +7,11 @@ import org.springframework.stereotype.Repository;
 
 import br.com.events.msauth.domain.entity.Person;
 
+/**
+ * This interface makes the connection to the person database table
+ *
+ * @author Gabriel Guimarães de Almeida
+ */
 @Repository
 public interface PersonRepository extends JpaRepository<Person, String> {
 

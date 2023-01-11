@@ -2,7 +2,6 @@ package br.com.events.msauth.infrastructure.exception;
 
 import org.springframework.http.HttpStatus;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import lombok.AllArgsConstructor;
@@ -11,6 +10,11 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+/**
+ * This class holds every needed information about any exception that is thrown inside this microservice
+ *
+ * @author Gabriel Guimarães de Almeida
+ */
 @Data
 @Builder
 @AllArgsConstructor

@@ -9,6 +9,11 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+/**
+ * This class select all paths that Swagger will cover
+ *
+ * @author Gabriel Guimarães de Almeida
+ */
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {

@@ -3,11 +3,15 @@ package br.com.events.msauth.application.config;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import br.com.events.msauth.application.config.apiKey.ApiKeyInterceptor;
 import lombok.RequiredArgsConstructor;
 
+/**
+ * This class tells with interceptor will act at each request
+ *
+ * @author Gabriel Guimarães de Almeida
+ */
 @Component
 @RequiredArgsConstructor
 public class InterceptorConfig implements WebMvcConfigurer {

@@ -4,6 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * This class holds every the new person's uuid
+ *
+ * @author Gabriel Giumarães de Almeida
+ */
 @Getter
 @Setter
 @AllArgsConstructor
