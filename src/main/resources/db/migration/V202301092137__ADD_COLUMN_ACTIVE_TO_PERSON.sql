@@ -1,1 +1,2 @@
-ALTER TABLE person ADD COLUMN active BOOLEAN;
+ALTER TABLE person
+    ADD COLUMN active BOOLEAN;
