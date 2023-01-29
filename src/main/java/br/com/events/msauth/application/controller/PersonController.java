@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import br.com.events.msauth.domain.form.person.create.in.CreatePersonForm;
+import br.com.events.msauth.domain.form.person.create.in.CreatePersonUseCaseForm;
 import br.com.events.msauth.infrastructure.controller.PersonControllerDoc;
 import br.com.events.msauth.infrastructure.useCase.person.CreatePersonUseCase;
 import lombok.RequiredArgsConstructor;
@@ -31,12 +31,12 @@ public class PersonController implements PersonControllerDoc {
     /**
      * This endpoint creates a new person on the database with the given data
      *
-     * @param form {@link CreatePersonForm} form with the data to validate and save on the database
+     * @param form {@link CreatePersonUseCaseForm} form with the data to validate and save on the database
      * @return {@link ResponseEntity}<{@link URI}> response entity with the URI that you can access the created data
      */
     @Override
     @PostMapping
-    public ResponseEntity<URI> create(@RequestBody @Valid CreatePersonForm form) {
+    public ResponseEntity<URI> create(@RequestBody @Valid CreatePersonUseCaseForm form) {
 
         var result = createPersonUseCase.execute(form);
         var uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{uuid}").buildAndExpand(result).toUri();

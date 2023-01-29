@@ -12,7 +12,7 @@ import lombok.experimental.SuperBuilder;
 @Getter
 @Setter
 @SuperBuilder
-public class EmailRequestMessageBase {
+public class EmailRequestKafkaMessageBase {
 
     protected String to;
 

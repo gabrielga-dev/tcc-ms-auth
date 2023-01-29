@@ -1,6 +1,6 @@
 create table person
 (
-    id            varchar(36) primary key not null,
+    uuid          varchar(36) primary key not null,
     first_name    varchar(75)             not null,
     last_name     varchar(150)            not null,
     cpf           varchar(14)             not null,

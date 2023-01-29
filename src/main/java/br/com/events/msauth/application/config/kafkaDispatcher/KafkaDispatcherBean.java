@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import br.com.events.msauth.application.dispatcher.KafkaDispatcher;
-import br.com.events.msauth.domain.message.PersonCreationEmailRequestMessage;
+import br.com.events.msauth.domain.message.PersonCreationEmailValidationEmailRequestKafkaMessage;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -21,7 +21,7 @@ public class KafkaDispatcherBean {
     private String kafkaPort;
 
     @Bean
-    public KafkaDispatcher<PersonCreationEmailRequestMessage> getOrderKafkaDispatcher() {
+    public KafkaDispatcher<PersonCreationEmailValidationEmailRequestKafkaMessage> getOrderKafkaDispatcher() {
         return new KafkaDispatcher<>(kafkaPort);
     }
 }

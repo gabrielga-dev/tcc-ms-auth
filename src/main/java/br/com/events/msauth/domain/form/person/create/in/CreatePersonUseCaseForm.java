@@ -19,7 +19,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
-public class CreatePersonForm {
+public class CreatePersonUseCaseForm {
 
     @NotNull(message = "O campo do primeiro nome não pode ser nulo.")
     @NotBlank(message = "O campo do primeiro nome não pode estar vazio.")

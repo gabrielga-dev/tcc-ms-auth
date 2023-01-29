@@ -1,11 +1,15 @@
 package br.com.events.msauth.domain.entity;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Getter;
@@ -25,7 +29,7 @@ import lombok.Setter;
 public class Person {
 
     @Id
-    @Column(name = "id")
+    @Column(name = "uuid")
     private String uuid = UUID.randomUUID().toString();
 
     @Column(name = "first_name", nullable = false)
@@ -50,5 +54,8 @@ public class Person {
     private LocalDateTime updateDate;
 
     @Column(name = "active", nullable = false)
-    private boolean active = true;
+    private boolean active = false;
+
+    @OneToMany(mappedBy = "person", fetch = FetchType.EAGER)
+    private List<EmailValidation> emailConfirmations = new ArrayList<>();
 }
