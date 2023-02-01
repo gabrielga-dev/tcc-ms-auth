@@ -4,7 +4,7 @@ import java.net.URI;
 
 import org.springframework.http.ResponseEntity;
 
-import br.com.events.msauth.domain.form.person.create.in.CreatePersonForm;
+import br.com.events.msauth.domain.form.person.create.in.CreatePersonUseCaseForm;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
@@ -19,5 +19,11 @@ import io.swagger.annotations.ApiOperation;
 public interface PersonControllerDoc {
 
     @ApiOperation(value = "Creates a new person")
-    ResponseEntity<URI> create(CreatePersonForm form);
+    ResponseEntity<URI> validatePersonEmail(CreatePersonUseCaseForm form);
+
+    @ApiOperation(value = "Validate if the email validation request exists")
+    ResponseEntity<Void> checkIfEmailValidationExists(String emailValidationUuid);
+
+    @ApiOperation(value = "Validate the person's email")
+    ResponseEntity<Void> validatePersonEmail(String emailValidationUuid);
 }

@@ -12,7 +12,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class CreatePersonResult {
+public class CreatePersonUseCaseResult {
 
     private String uuid;
 }

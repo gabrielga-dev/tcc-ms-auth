@@ -14,7 +14,7 @@ import org.mockito.MockitoAnnotations;
 
 import br.com.events.msauth.application.validation.person.create.exception.PersonCreationEmailAvailableException;
 import br.com.events.msauth.domain.entity.Person;
-import br.com.events.msauth.domain.form.person.create.in.CreatePersonForm;
+import br.com.events.msauth.domain.form.person.create.in.CreatePersonUseCaseForm;
 import br.com.events.msauth.domain.repository.PersonRepository;
 import br.com.events.msauth.util.constants.TestConstants;
 
@@ -44,7 +44,7 @@ public class PersonCreationEmailAvailableValidationTest {
                 Optional.empty()
             );
 
-        var form = CreatePersonForm
+        var form = CreatePersonUseCaseForm
             .builder()
             .email(TestConstants.TEST_STR)
             .build();
@@ -62,7 +62,7 @@ public class PersonCreationEmailAvailableValidationTest {
                 Optional.of(new Person())
             );
 
-        var form = CreatePersonForm
+        var form = CreatePersonUseCaseForm
             .builder()
             .email(TestConstants.TEST_STR)
             .build();

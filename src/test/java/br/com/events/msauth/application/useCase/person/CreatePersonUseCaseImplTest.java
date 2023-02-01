@@ -13,7 +13,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import br.com.events.msauth.domain.entity.Person;
-import br.com.events.msauth.domain.form.person.create.in.CreatePersonForm;
+import br.com.events.msauth.domain.form.person.create.in.CreatePersonUseCaseForm;
 import br.com.events.msauth.domain.repository.PersonRepository;
 import br.com.events.msauth.infrastructure.validation.person.create.PersonCreationValidator;
 import br.com.events.msauth.util.constants.TestConstants;
@@ -37,7 +37,7 @@ public class CreatePersonUseCaseImplTest {
     @BeforeEach
     void setUp() {
         MockitoAnnotations.initMocks(this);
-        doNothing().when(validator).validate(any(CreatePersonForm.class));
+        doNothing().when(validator).validate(any(CreatePersonUseCaseForm.class));
         when(repository.save(any(Person.class)))
             .thenAnswer(
                 i -> {
@@ -51,7 +51,7 @@ public class CreatePersonUseCaseImplTest {
     @Test
     @DisplayName("execute - when the incoming form is correct then no exception is thrown.")
     void execute_whenValidationGoesWell_thenReturnCreatedUuid() {
-        var form = CreatePersonForm
+        var form = CreatePersonUseCaseForm
             .builder()
             .cpf(TestConstants.TEST_STR)
             .build();

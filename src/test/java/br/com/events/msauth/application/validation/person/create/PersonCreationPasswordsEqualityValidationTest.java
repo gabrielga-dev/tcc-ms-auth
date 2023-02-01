@@ -5,7 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import br.com.events.msauth.application.validation.person.create.exception.PersonCreationPasswordEqualityException;
-import br.com.events.msauth.domain.form.person.create.in.CreatePersonForm;
+import br.com.events.msauth.domain.form.person.create.in.CreatePersonUseCaseForm;
 import br.com.events.msauth.util.constants.TestConstants;
 
 /**
@@ -20,7 +20,7 @@ public class PersonCreationPasswordsEqualityValidationTest {
     void execute_whenPasswordsDoesMatchesMatches_thenNoExceptionIsThrown() {
         var validation = new PersonCreationPasswordsEqualityValidation();
 
-        var form = CreatePersonForm
+        var form = CreatePersonUseCaseForm
             .builder()
             .password(TestConstants.TEST_STR)
             .passwordRepeated(TestConstants.TEST_STR)
@@ -36,7 +36,7 @@ public class PersonCreationPasswordsEqualityValidationTest {
     void execute_whenPasswordsDoesNotMatchesMatches_thenPersonCreationPasswordEqualityExceptionIsThrown() {
         var validation = new PersonCreationPasswordsEqualityValidation();
 
-        var form = CreatePersonForm
+        var form = CreatePersonUseCaseForm
             .builder()
             .password(TestConstants.TEST_STR)
             .passwordRepeated(TestConstants.TEST_STR + "1")

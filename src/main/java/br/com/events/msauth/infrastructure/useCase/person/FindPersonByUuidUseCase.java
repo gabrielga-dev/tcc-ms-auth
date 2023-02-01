@@ -1,7 +1,7 @@
 package br.com.events.msauth.infrastructure.useCase.person;
 
 import br.com.events.msauth.domain.form.person.create.in.CreatePersonUseCaseForm;
-import br.com.events.msauth.domain.form.person.create.out.CreatePersonUseCaseResult;
+import br.com.events.msauth.domain.form.person.findByUuid.out.FindPersonByUuidUseCaseResult;
 import br.com.events.msauth.infrastructure.UseCaseBase;
 
 /**
@@ -9,6 +9,6 @@ import br.com.events.msauth.infrastructure.UseCaseBase;
  *
  * @author Gabriel Guimarães de Almeida
  */
-public interface CreatePersonUseCase extends UseCaseBase<CreatePersonUseCaseForm, CreatePersonUseCaseResult> {
+public interface FindPersonByUuidUseCase extends UseCaseBase<String, FindPersonByUuidUseCaseResult> {
 
 }

@@ -7,7 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import br.com.events.msauth.domain.form.person.create.in.CreatePersonForm;
+import br.com.events.msauth.domain.form.person.create.in.CreatePersonUseCaseForm;
 import br.com.events.msauth.infrastructure.validation.person.create.PersonCreationValidation;
 
 /**
@@ -21,7 +21,7 @@ public class PersonCreationValidatorImplTest {
 
     public PersonCreationValidatorImplTest() {
         var mockedValidation = Mockito.mock(PersonCreationValidation.class);
-        Mockito.doNothing().when(mockedValidation).validate(Mockito.any(CreatePersonForm.class));
+        Mockito.doNothing().when(mockedValidation).validate(Mockito.any(CreatePersonUseCaseForm.class));
 
         var validations = List.of(mockedValidation);
         this.validator = new PersonCreationValidatorImpl(validations);
@@ -30,7 +30,7 @@ public class PersonCreationValidatorImplTest {
     @Test
     @DisplayName("execute - when the incoming form is correct then no exception is thrown.")
     void execute_whenValidationGoesWell_thenNoExceptionIsThrow() {
-        var form = CreatePersonForm.builder().build();
+        var form = CreatePersonUseCaseForm.builder().build();
 
         Assertions.assertDoesNotThrow(
             () -> validator.validate(form)
