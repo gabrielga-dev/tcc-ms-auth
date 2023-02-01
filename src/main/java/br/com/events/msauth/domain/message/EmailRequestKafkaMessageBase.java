@@ -16,7 +16,5 @@ public class EmailRequestKafkaMessageBase {
 
     protected String to;
 
-    protected String subject;
-
     protected Long templateId;
 }
