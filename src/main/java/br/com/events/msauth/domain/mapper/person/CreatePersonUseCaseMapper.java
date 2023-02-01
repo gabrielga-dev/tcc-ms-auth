@@ -1,5 +1,7 @@
 package br.com.events.msauth.domain.mapper.person;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import br.com.events.msauth.domain.entity.Person;
 import br.com.events.msauth.domain.form.person.create.in.CreatePersonUseCaseForm;
 import br.com.events.msauth.domain.form.person.create.out.CreatePersonUseCaseResult;
@@ -28,7 +30,9 @@ public final class CreatePersonUseCaseMapper {
         toReturn.setLastName(form.getLastName());
         toReturn.setCpf(form.getCpf());
         toReturn.setEmail(form.getEmail());
-        toReturn.setPassword(form.getPassword());
+
+        var encryptedPassword = new BCryptPasswordEncoder().encode(form.getPassword());
+        toReturn.setPassword(encryptedPassword);
 
         return toReturn;
     }
