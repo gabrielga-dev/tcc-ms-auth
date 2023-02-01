@@ -50,8 +50,10 @@ public final class SendPersonCreationEmailValidationKafkaMessageUseCaseMapper {
             .builder()
             .templateId(EmailTemplateIdType.PERSON_CREATION_EMAIL_VALIDATION.getId())
             .to(form.getEmail())
+            .subject("Bem-vindo(a) ao MyEvents!")
             .personFirstName(form.getPersonFirstName())
             .personLastName(form.getPersonLastName())
+            .emailValidationUuid(form.getEmailValidationUuid())
             .build();
     }
 }
