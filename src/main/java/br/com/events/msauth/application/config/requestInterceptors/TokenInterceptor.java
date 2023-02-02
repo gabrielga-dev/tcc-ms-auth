@@ -18,6 +18,11 @@ import br.com.events.msauth.domain.repository.PersonRepository;
 import br.com.events.msauth.infrastructure.service.JwtTokenService;
 import lombok.RequiredArgsConstructor;
 
+/**
+ * This class intercept every request and check if there is a Authorization header containing a JWT and validate it
+ *
+ * @author Gabriel Guimarães de Almeida
+ */
 @Configuration
 @RequiredArgsConstructor
 public class TokenInterceptor extends OncePerRequestFilter {

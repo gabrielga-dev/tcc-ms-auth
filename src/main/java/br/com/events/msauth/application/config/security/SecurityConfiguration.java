@@ -18,6 +18,11 @@ import br.com.events.msauth.domain.repository.PersonRepository;
 import br.com.events.msauth.infrastructure.service.JwtTokenService;
 import lombok.RequiredArgsConstructor;
 
+/**
+ * This class makes the configuration about security
+ *
+ * @author Gabriel Guimarães de Almeida
+ */
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
