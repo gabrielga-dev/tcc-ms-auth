@@ -1,4 +1,4 @@
-package br.com.events.msauth.application.useCase.emailValidation;
+package br.com.events.msauth.application.useCase.emailValidation.personCreation;
 
 import java.time.LocalDateTime;
 
@@ -9,8 +9,8 @@ import br.com.events.msauth.domain.entity.EmailValidation;
 import br.com.events.msauth.domain.entity.type.EmailValidationType;
 import br.com.events.msauth.domain.repository.EmailValidationRepository;
 import br.com.events.msauth.domain.repository.PersonRepository;
-import br.com.events.msauth.infrastructure.useCase.emailConfirmation.CreatePersonCreationEmailValidationUseCase;
-import br.com.events.msauth.infrastructure.useCase.emailConfirmation.DeleteAllPastPersonCreationEmailValidationUseCase;
+import br.com.events.msauth.infrastructure.useCase.emailConfirmation.personCreation.CreatePersonCreationEmailValidationUseCase;
+import br.com.events.msauth.infrastructure.useCase.emailConfirmation.personCreation.DeleteAllPastPersonCreationEmailValidationUseCase;
 import lombok.RequiredArgsConstructor;
 
 /**

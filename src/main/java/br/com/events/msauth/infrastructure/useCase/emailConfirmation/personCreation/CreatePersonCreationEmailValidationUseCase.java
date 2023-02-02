@@ -1,4 +1,4 @@
-package br.com.events.msauth.infrastructure.useCase.emailConfirmation;
+package br.com.events.msauth.infrastructure.useCase.emailConfirmation.personCreation;
 
 import br.com.events.msauth.infrastructure.UseCaseBase;
 

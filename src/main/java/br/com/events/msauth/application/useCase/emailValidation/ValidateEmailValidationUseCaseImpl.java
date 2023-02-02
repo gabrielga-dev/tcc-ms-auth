@@ -5,27 +5,23 @@ import java.time.LocalDateTime;
 import org.springframework.stereotype.Component;
 
 import br.com.events.msauth.application.useCase.exception.emailValidation.EmailValidationNotFoundException;
+import br.com.events.msauth.domain.form.emailValidation.validateEmailValidation.in.ValidateEmailValidationUseCaseForm;
 import br.com.events.msauth.domain.repository.EmailValidationRepository;
 import br.com.events.msauth.infrastructure.useCase.emailConfirmation.ValidateEmailValidationUseCase;
-import br.com.events.msauth.infrastructure.useCase.person.SetValidStatusOnPersonByEmailValidationsUseCase;
 import lombok.RequiredArgsConstructor;
 
-/**
- * This class implements {@link ValidateEmailValidationUseCase} interface to validate a person's email
- *
- * @author Gabriel Guimarães de Almeida
- */
 @Component
 @RequiredArgsConstructor
 public class ValidateEmailValidationUseCaseImpl implements ValidateEmailValidationUseCase {
 
     private final EmailValidationRepository repository;
-    private final SetValidStatusOnPersonByEmailValidationsUseCase setValidStatusOnPersonByEmailValidationsUseCase;
 
     @Override
-    public Void execute(final String param) {
-        var validation = repository.findById(param)
-            .orElseThrow(
+    public Void execute(final ValidateEmailValidationUseCaseForm form) {
+
+        var validation = repository.findByUuidAndTypeAndValidatedIsFalse(
+            form.getEmailValidationUuid(), form.getEmailValidationType()
+            ).orElseThrow(
                 EmailValidationNotFoundException::new
             );
 
@@ -33,8 +29,6 @@ public class ValidateEmailValidationUseCaseImpl implements ValidateEmailValidati
         validation.setValidationDate(LocalDateTime.now());
 
         repository.save(validation);
-
-        setValidStatusOnPersonByEmailValidationsUseCase.execute(validation.getPerson().getUuid());
 
         return null;
     }

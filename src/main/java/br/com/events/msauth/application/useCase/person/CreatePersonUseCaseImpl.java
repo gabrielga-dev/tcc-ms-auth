@@ -10,7 +10,7 @@ import br.com.events.msauth.domain.mapper.kafkaMessage.SendPersonCreationEmailVa
 import br.com.events.msauth.domain.mapper.person.CreatePersonUseCaseMapper;
 import br.com.events.msauth.domain.repository.EmailValidationRepository;
 import br.com.events.msauth.domain.repository.PersonRepository;
-import br.com.events.msauth.infrastructure.useCase.emailConfirmation.CreatePersonCreationEmailValidationUseCase;
+import br.com.events.msauth.infrastructure.useCase.emailConfirmation.personCreation.CreatePersonCreationEmailValidationUseCase;
 import br.com.events.msauth.infrastructure.useCase.kafkaMessage.SendPersonCreationEmailValidationKafkaMessageUseCase;
 import br.com.events.msauth.infrastructure.useCase.person.CreatePersonUseCase;
 import br.com.events.msauth.infrastructure.validation.person.create.PersonCreationValidator;
