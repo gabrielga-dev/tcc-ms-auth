@@ -45,7 +45,6 @@ public class CreatePersonUseCaseForm {
     @Size(min = 5, max = 100, message = "O campo do email deve conter, pelo menos, 5 caracteres e no máximo 100.")
     private String email;
 
-
     @NotNull(message = "O campo da senha não pode ser nulo.")
     @NotBlank(message = "O campo da senha não pode estar vazio.")
     @Size(min = 5, max = 100, message = "O campo de senha deve conter, pelo menos, 8 caracteres e no máximo 15.")

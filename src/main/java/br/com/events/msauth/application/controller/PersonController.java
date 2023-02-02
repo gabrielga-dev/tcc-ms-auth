@@ -5,7 +5,6 @@ import java.net.URI;
 import javax.validation.Valid;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,12 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import br.com.events.msauth.domain.form.person.changePassword.in.ChangePasswordForm;
+import br.com.events.msauth.domain.form.person.changePassword.in.ChangePersonPasswordUseCaseForm;
 import br.com.events.msauth.domain.form.person.create.in.CreatePersonUseCaseForm;
 import br.com.events.msauth.domain.form.person.generateToken.in.GeneratePersonTokenForm;
 import br.com.events.msauth.domain.form.person.generateToken.out.GeneratePersonTokenResult;
 import br.com.events.msauth.infrastructure.controller.PersonControllerDoc;
-import br.com.events.msauth.infrastructure.useCase.emailConfirmation.CheckIfEmailValidationExistsUseCase;
-import br.com.events.msauth.infrastructure.useCase.emailConfirmation.ValidateEmailValidationUseCase;
+import br.com.events.msauth.infrastructure.useCase.person.ChangePersonPasswordUseCase;
 import br.com.events.msauth.infrastructure.useCase.person.CreatePersonUseCase;
 import br.com.events.msauth.infrastructure.useCase.person.GeneratePersonTokenUseCase;
 import lombok.RequiredArgsConstructor;
@@ -35,9 +35,8 @@ import lombok.RequiredArgsConstructor;
 public class PersonController implements PersonControllerDoc {
 
     private final CreatePersonUseCase createPersonUseCase;
-    private final CheckIfEmailValidationExistsUseCase checkIfEmailValidationExistsUseCase;
-    private final ValidateEmailValidationUseCase validateEmailValidationUseCase;
     private final GeneratePersonTokenUseCase generatePersonTokenUseCase;
+    private final ChangePersonPasswordUseCase changePersonPasswordUseCase;
 
     /**
      * This endpoint creates a new person on the database with the given data
@@ -55,20 +54,6 @@ public class PersonController implements PersonControllerDoc {
     }
 
     @Override
-    @GetMapping("/validate-email/{validationUuid}")
-    public ResponseEntity<Void> checkIfEmailValidationExists(@PathVariable("validationUuid") String emailValidationUuid) {
-        checkIfEmailValidationExistsUseCase.execute(emailValidationUuid);
-        return ResponseEntity.noContent().build();
-    }
-
-    @Override
-    @PatchMapping("/validate-email/{validationUuid}")
-    public ResponseEntity<Void> create(@PathVariable("validationUuid") String emailValidationUuid) {
-        validateEmailValidationUseCase.execute(emailValidationUuid);
-        return ResponseEntity.noContent().build();
-    }
-
-    @Override
     @PostMapping("/token")
     public ResponseEntity<GeneratePersonTokenResult> generateToken(
         @RequestBody @Valid GeneratePersonTokenForm personTokenForm
@@ -78,5 +63,19 @@ public class PersonController implements PersonControllerDoc {
         );
     }
 
+    @Override
+    @PatchMapping("/change-password/{uuid}")
+    public ResponseEntity<Void> changePassword(
+        @PathVariable("uuid") String emailValidationUuid, @RequestBody @Valid ChangePasswordForm changePasswordForm
+    ) {
+        var useCaseForm = ChangePersonPasswordUseCaseForm
+            .builder()
+            .emailValidationUuid(emailValidationUuid)
+            .password(changePasswordForm.getPassword())
+            .passwordRepeated(changePasswordForm.getPasswordRepeated())
+            .build();
 
+        changePersonPasswordUseCase.execute(useCaseForm);
+        return ResponseEntity.noContent().build();
+    }
 }

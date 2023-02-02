@@ -7,6 +7,6 @@ import br.com.events.msauth.infrastructure.UseCaseBase;
  *
  * @author Gabriel Guimarães de Almeida
  */
-public interface CheckIfEmailValidationExistsUseCase extends UseCaseBase<String, Void> {
+public interface CheckIfEmailValidationExistsAndIsNotValidatedUseCase extends UseCaseBase<String, Void> {
 
 }

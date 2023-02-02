@@ -26,13 +26,13 @@ public class SendPersonCreationEmailValidationKafkaMessageUseCaseImpl implements
     @Value("${kafka.topic.email}")
     private String emailKafkaTopic;
 
-    private final KafkaDispatcher<PersonCreationEmailValidationEmailRequestKafkaMessage> testEmailKafkaDispatcher;
+    private final KafkaDispatcher<PersonCreationEmailValidationEmailRequestKafkaMessage> emailKafkaDispatcher;
 
     @Override
     public Void execute(final SendPersonCreationEmailValidationKafkaMessageUseCaseForm param) {
         var message = SendPersonCreationEmailValidationKafkaMessageUseCaseMapper.convertToKafkaMessage(param);
 
-        testEmailKafkaDispatcher.send(
+        emailKafkaDispatcher.send(
             emailKafkaTopic,
             message.getEmailValidationUuid(),
             message,
