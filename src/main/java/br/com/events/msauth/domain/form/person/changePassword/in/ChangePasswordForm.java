@@ -8,6 +8,11 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * This class holds the needed information to change a person's password
+ *
+ * @author Gabriel Guimarães de Almeida
+ */
 @Getter
 @Setter
 @Builder

@@ -4,6 +4,11 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * This class holds every needed information to send to ms-mailer to send a password change request email
+ *
+ * @author Gabriel Guimarães de Almeida
+ */
 @Getter
 @Setter
 @Builder
