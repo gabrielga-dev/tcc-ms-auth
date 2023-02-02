@@ -1,4 +1,4 @@
-package br.com.events.msauth.application.config.apiKey.exception;
+package br.com.events.msauth.application.config.requestInterceptors.exception;
 
 import br.com.events.msauth.infrastructure.exception.badRequest.BadRequestException;
 

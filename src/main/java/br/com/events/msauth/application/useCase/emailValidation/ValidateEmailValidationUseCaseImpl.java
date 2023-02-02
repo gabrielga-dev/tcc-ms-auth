@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import br.com.events.msauth.application.useCase.exception.emailValidation.EmailValidationNotFoundException;
 import br.com.events.msauth.domain.repository.EmailValidationRepository;
 import br.com.events.msauth.infrastructure.useCase.emailConfirmation.ValidateEmailValidationUseCase;
+import br.com.events.msauth.infrastructure.useCase.person.SetValidStatusOnPersonByEmailValidationsUseCase;
 import lombok.RequiredArgsConstructor;
 
 /**
@@ -19,6 +20,7 @@ import lombok.RequiredArgsConstructor;
 public class ValidateEmailValidationUseCaseImpl implements ValidateEmailValidationUseCase {
 
     private final EmailValidationRepository repository;
+    private final SetValidStatusOnPersonByEmailValidationsUseCase setValidStatusOnPersonByEmailValidationsUseCase;
 
     @Override
     public Void execute(final String param) {
@@ -31,6 +33,9 @@ public class ValidateEmailValidationUseCaseImpl implements ValidateEmailValidati
         validation.setValidationDate(LocalDateTime.now());
 
         repository.save(validation);
+
+        setValidStatusOnPersonByEmailValidationsUseCase.execute(validation.getPerson().getUuid());
+
         return null;
     }
 }

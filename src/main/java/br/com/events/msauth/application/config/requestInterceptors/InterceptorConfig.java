@@ -1,10 +1,9 @@
-package br.com.events.msauth.application.config;
+package br.com.events.msauth.application.config.requestInterceptors;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import br.com.events.msauth.application.config.apiKey.ApiKeyInterceptor;
 import lombok.RequiredArgsConstructor;
 
 /**

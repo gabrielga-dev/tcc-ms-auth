@@ -1,46 +1,40 @@
 package br.com.events.msauth.application.useCase.emailValidation;
 
-import java.time.LocalDateTime;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
 
 import br.com.events.msauth.application.useCase.exception.person.NoPersonFoundByGivenUuidException;
-import br.com.events.msauth.domain.entity.EmailValidation;
 import br.com.events.msauth.domain.entity.type.EmailValidationType;
 import br.com.events.msauth.domain.repository.EmailValidationRepository;
 import br.com.events.msauth.domain.repository.PersonRepository;
-import br.com.events.msauth.infrastructure.useCase.emailConfirmation.CreatePersonCreationEmailValidationUseCase;
 import br.com.events.msauth.infrastructure.useCase.emailConfirmation.DeleteAllPastPersonCreationEmailValidationUseCase;
 import lombok.RequiredArgsConstructor;
 
 /**
- * This class implements the {@link CreatePersonCreationEmailValidationUseCase} interface to create a new email
- * validation
+ * This class deletes all past person's person creation email validation
  *
  * @author Gabriel Guimarães de Almeida
  */
 @Component
 @RequiredArgsConstructor
-public class CreatePersonCreationEmailValidationUseCaseImpl implements CreatePersonCreationEmailValidationUseCase {
+public class DeleteAllPastPersonCreationEmailValidationUseCaseImpl
+    implements DeleteAllPastPersonCreationEmailValidationUseCase {
 
-    private final EmailValidationRepository repository;
+    private final EmailValidationRepository emailValidationRepository;
     private final PersonRepository personRepository;
-    private final DeleteAllPastPersonCreationEmailValidationUseCase deleteAllPastPersonCreationEmailValidationUseCase;
 
     @Override
     public Void execute(final String userUuid) {
         var person = personRepository.findById(userUuid)
             .orElseThrow(NoPersonFoundByGivenUuidException::new);
 
-        deleteAllPastPersonCreationEmailValidationUseCase.execute(userUuid);
+        var emailValidationsToDelete = person.getEmailConfirmations()
+            .stream()
+            .filter(validation -> EmailValidationType.PERSON_CREATION.equals(validation.getType()))
+            .collect(Collectors.toList());
 
-        var toSave = new EmailValidation();
-
-        toSave.setPerson(person);
-        toSave.setType(EmailValidationType.PERSON_CREATION);
-        toSave.setCreationDate(LocalDateTime.now());
-
-        repository.save(toSave);
+        emailValidationRepository.deleteAll(emailValidationsToDelete);
 
         return null;
     }
