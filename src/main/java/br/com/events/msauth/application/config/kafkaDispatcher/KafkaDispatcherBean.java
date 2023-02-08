@@ -5,6 +5,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import br.com.events.msauth.application.dispatcher.KafkaDispatcher;
+import br.com.events.msauth.domain.message.EmailChangeRequestEmailValidationEmailRequestKafkaMessage;
+import br.com.events.msauth.domain.message.EmailChangedEmailRequestKafkaMessage;
 import br.com.events.msauth.domain.message.PasswordChangeEmailValidationEmailRequestKafkaMessage;
 import br.com.events.msauth.domain.message.PersonCreationEmailValidationEmailRequestKafkaMessage;
 import lombok.extern.slf4j.Slf4j;
@@ -28,6 +30,16 @@ public class KafkaDispatcherBean {
 
     @Bean
     public KafkaDispatcher<PasswordChangeEmailValidationEmailRequestKafkaMessage> getOrderKafkaDispatcherPasswordChangeEmailValidation() {
+        return new KafkaDispatcher<>(kafkaPort);
+    }
+
+    @Bean
+    public KafkaDispatcher<EmailChangeRequestEmailValidationEmailRequestKafkaMessage> getEmailChangeEmailValidationEmailRequestKafkaMessageKafkaDispatcher() {
+        return new KafkaDispatcher<>(kafkaPort);
+    }
+
+    @Bean
+    public KafkaDispatcher<EmailChangedEmailRequestKafkaMessage> getEmailChangedEmailRequestKafkaMessageKafkaDispatcher() {
         return new KafkaDispatcher<>(kafkaPort);
     }
 }

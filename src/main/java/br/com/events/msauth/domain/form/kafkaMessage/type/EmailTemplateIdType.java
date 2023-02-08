@@ -13,7 +13,9 @@ import lombok.RequiredArgsConstructor;
 public enum EmailTemplateIdType {
     TEST(1L),
     PERSON_CREATION_EMAIL_VALIDATION(2L),
-    PASSWORD_CHANGE_EMAIL_VALIDATION(3L);
+    PASSWORD_CHANGE_EMAIL_VALIDATION(3L),
+    EMAIL_CHANGE_EMAIL_VALIDATION(4L),
+    EMAIL_CHANGED(5L);
 
     private final Long id;
 }

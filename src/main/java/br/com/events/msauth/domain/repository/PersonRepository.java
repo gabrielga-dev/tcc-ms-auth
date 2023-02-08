@@ -18,4 +18,6 @@ public interface PersonRepository extends JpaRepository<Person, String> {
     Optional<Person> findByEmailAndActiveTrue(String email);
 
     Optional<Person> findByCpfAndActiveTrue(String email);
+
+    Optional<Person> findByUuidAndActiveTrue(String uuid);
 }

@@ -2,6 +2,7 @@ package br.com.events.msauth.infrastructure.controller;
 
 import org.springframework.http.ResponseEntity;
 
+import br.com.events.msauth.domain.form.emailValidation.changeEmailRequest.CreateEmailChangeRequestForm;
 import br.com.events.msauth.domain.form.emailValidation.passwordChangeRequest.in.CreatePasswordChangeRequestForm;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -25,5 +26,10 @@ public interface EmailValidationControllerDoc {
     @ApiOperation(value = "Creates a new password change request")
     ResponseEntity<Void> createPasswordChangeRequest(
         CreatePasswordChangeRequestForm passwordChangeRequestForm
+    );
+
+    @ApiOperation(value = "Creates a new email change request")
+    ResponseEntity<Void> createEmailChangeRequest(
+        CreateEmailChangeRequestForm passwordChangeRequestForm
     );
 }

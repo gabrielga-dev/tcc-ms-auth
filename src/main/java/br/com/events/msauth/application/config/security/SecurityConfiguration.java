@@ -13,7 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import br.com.events.msauth.application.config.requestInterceptors.TokenInterceptor;
-import br.com.events.msauth.application.service.AuthenticateServiceImpl;
+import br.com.events.msauth.application.service.AuthenticationService;
 import br.com.events.msauth.domain.repository.PersonRepository;
 import br.com.events.msauth.infrastructure.service.JwtTokenService;
 import lombok.RequiredArgsConstructor;
@@ -28,7 +28,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    private final AuthenticateServiceImpl authService;
+    private final AuthenticationService authService;
 
     private final JwtTokenService jwtTokenService;
 
