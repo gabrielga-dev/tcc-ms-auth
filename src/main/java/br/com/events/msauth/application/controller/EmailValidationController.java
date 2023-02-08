@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.events.msauth.domain.form.emailValidation.changeEmailRequest.CreateEmailChangeRequestForm;
 import br.com.events.msauth.domain.form.emailValidation.passwordChangeRequest.in.CreatePasswordChangeRequestForm;
 import br.com.events.msauth.infrastructure.controller.EmailValidationControllerDoc;
 import br.com.events.msauth.infrastructure.useCase.emailConfirmation.CheckIfEmailValidationExistsAndIsNotValidatedUseCase;
+import br.com.events.msauth.infrastructure.useCase.emailConfirmation.emailChange.CreateEmailChangeEmailValidationUseCase;
 import br.com.events.msauth.infrastructure.useCase.emailConfirmation.passwordChange.CreatePasswordChangeEmailValidationUseCase;
 import br.com.events.msauth.infrastructure.useCase.emailConfirmation.personCreation.ValidatePersonCreationEmailValidationUseCase;
 import lombok.RequiredArgsConstructor;
@@ -31,6 +33,7 @@ public class EmailValidationController implements EmailValidationControllerDoc {
     private final CheckIfEmailValidationExistsAndIsNotValidatedUseCase checkIfEmailValidationExistsAndIsNotValidatedUseCase;
     private final ValidatePersonCreationEmailValidationUseCase validatePersonCreationEmailValidationUseCase;
     private final CreatePasswordChangeEmailValidationUseCase createPasswordChangeEmailValidationUseCase;
+    private final CreateEmailChangeEmailValidationUseCase createEmailChangeEmailValidationUseCase;
 
     @Override
     @GetMapping("/{validationUuid}")
@@ -56,6 +59,17 @@ public class EmailValidationController implements EmailValidationControllerDoc {
         @RequestBody @Valid CreatePasswordChangeRequestForm passwordChangeRequestForm
     ) {
         createPasswordChangeEmailValidationUseCase.execute(passwordChangeRequestForm.getEmail());
+        return ResponseEntity.noContent().build();
+    }
+
+    @Override
+    @PostMapping("/change-email/request")
+    public ResponseEntity<Void> createEmailChangeRequest(
+        @RequestBody @Valid CreateEmailChangeRequestForm createEmailChangeRequestForm
+    ) {
+
+        createEmailChangeEmailValidationUseCase.execute(createEmailChangeRequestForm.getUuid());
+
         return ResponseEntity.noContent().build();
     }
 }

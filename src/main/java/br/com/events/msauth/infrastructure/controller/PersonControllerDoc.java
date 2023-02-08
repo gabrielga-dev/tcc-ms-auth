@@ -4,10 +4,12 @@ import java.net.URI;
 
 import org.springframework.http.ResponseEntity;
 
+import br.com.events.msauth.domain.form.person.changeEmail.in.ChangePersonEmailForm;
 import br.com.events.msauth.domain.form.person.changePassword.in.ChangePasswordForm;
 import br.com.events.msauth.domain.form.person.create.in.CreatePersonUseCaseForm;
 import br.com.events.msauth.domain.form.person.generateToken.in.GeneratePersonTokenForm;
 import br.com.events.msauth.domain.form.person.generateToken.out.GeneratePersonTokenResult;
+import br.com.events.msauth.domain.form.person.getAuthenticatedPersonInformation.out.GetAuthenticatedPersonInformationResult;
 import br.com.events.msauth.domain.form.person.update.in.UpdatePersonForm;
 import br.com.events.msauth.domain.form.person.update.out.UpdatePersonResult;
 import io.swagger.annotations.Api;
@@ -34,4 +36,10 @@ public interface PersonControllerDoc {
 
     @ApiOperation(value = "Update a person with the given data")
     ResponseEntity<UpdatePersonResult> update(String personUuid, UpdatePersonForm updatePersonForm);
+
+    @ApiOperation(value = "Update a person email")
+    ResponseEntity<UpdatePersonResult> changeEmail(String personUuid, ChangePersonEmailForm changePersonEmailForm);
+
+    @ApiOperation(value = "Get the information of the authenticated person")
+    ResponseEntity<GetAuthenticatedPersonInformationResult> getAuthenticatedPersonInformation();
 }
