@@ -14,8 +14,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import br.com.events.msauth.application.config.requestInterceptors.TokenInterceptor;
 import br.com.events.msauth.application.service.AuthenticationService;
-import br.com.events.msauth.domain.repository.PersonRepository;
-import br.com.events.msauth.infrastructure.service.JwtTokenService;
 import lombok.RequiredArgsConstructor;
 
 /**
@@ -30,9 +28,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private final AuthenticationService authService;
 
-    private final JwtTokenService jwtTokenService;
-
-    private final PersonRepository personRepository;
+    private final TokenInterceptor tokenInterceptor;
 
     @Override
     @Bean
@@ -59,7 +55,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .and().cors().and().csrf().disable()
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and().addFilterBefore(
-                new TokenInterceptor(jwtTokenService, personRepository), UsernamePasswordAuthenticationFilter.class
+                tokenInterceptor, UsernamePasswordAuthenticationFilter.class
             );
     }
 }

@@ -16,6 +16,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import br.com.events.msauth.application.service.exception.NoPersonWithJwtTokenUuidFoundException;
 import br.com.events.msauth.domain.repository.PersonRepository;
 import br.com.events.msauth.infrastructure.service.JwtTokenService;
+import br.com.events.msauth.util.FilterExceptionUtil;
 import lombok.RequiredArgsConstructor;
 
 /**
@@ -30,6 +31,7 @@ public class TokenInterceptor extends OncePerRequestFilter {
     private final JwtTokenService tokenService;
 
     private final PersonRepository personRepository;
+    private final FilterExceptionUtil filterExceptionUtil;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
@@ -38,8 +40,10 @@ public class TokenInterceptor extends OncePerRequestFilter {
         String token = retrivetoken(request);
         if (tokenService.isValidToken(token)) {
             authenticateUser(token);
+            filterChain.doFilter(request, response);
+        } else {
+            filterExceptionUtil.setResponseError(response, new NoPersonWithJwtTokenUuidFoundException());
         }
-        filterChain.doFilter(request, response);
     }
 
     private void authenticateUser(String token) {
