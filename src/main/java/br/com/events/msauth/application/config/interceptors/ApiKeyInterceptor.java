@@ -1,4 +1,4 @@
-package br.com.events.msauth.application.config.requestInterceptors;
+package br.com.events.msauth.application.config.interceptors;
 
 import java.util.List;
 import java.util.Optional;
@@ -10,8 +10,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
-import br.com.events.msauth.application.config.requestInterceptors.exception.InvalidApiKeyException;
-import br.com.events.msauth.application.config.requestInterceptors.exception.NoApiKeyReceivedException;
+import br.com.events.msauth.application.config.interceptors.exception.InvalidApiKeyException;
+import br.com.events.msauth.application.config.interceptors.exception.NoApiKeyReceivedException;
 
 /**
  * This class makes the request filtering so only consumers with allowed api-key can access this microservice's

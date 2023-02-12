@@ -1,6 +1,7 @@
-package br.com.events.msauth.application.config.requestInterceptors;
+package br.com.events.msauth.application.config.interceptors;
 
 import java.io.IOException;
+import java.util.Objects;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -29,7 +30,6 @@ import lombok.RequiredArgsConstructor;
 public class TokenInterceptor extends OncePerRequestFilter {
 
     private final JwtTokenService tokenService;
-
     private final PersonRepository personRepository;
     private final FilterExceptionUtil filterExceptionUtil;
 
@@ -37,13 +37,21 @@ public class TokenInterceptor extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
         throws ServletException, IOException {
 
-        String token = retrivetoken(request);
-        if (tokenService.isValidToken(token)) {
+        var token = request.getHeader("Authorization");
+
+        if (Objects.isNull(token) || !token.startsWith("Bearer ")) {
+            filterChain.doFilter(request, response);
+            return;
+        }
+
+        token = extractToken(token);
+
+        if(tokenService.isValidToken(token)){
             authenticateUser(token);
             filterChain.doFilter(request, response);
-        } else {
-            filterExceptionUtil.setResponseError(response, new NoPersonWithJwtTokenUuidFoundException());
+            return;
         }
+        filterExceptionUtil.setResponseError(response, new NoPersonWithJwtTokenUuidFoundException());
     }
 
     private void authenticateUser(String token) {
@@ -59,8 +67,7 @@ public class TokenInterceptor extends OncePerRequestFilter {
         SecurityContextHolder.getContext().setAuthentication(authentication);
     }
 
-    private String retrivetoken(HttpServletRequest request) {
-        String token = request.getHeader("Authorization");
+    private String extractToken(String token) {
         if (ObjectUtils.isEmpty(token) || !token.startsWith("Bearer ")) {
             return null;
         }
