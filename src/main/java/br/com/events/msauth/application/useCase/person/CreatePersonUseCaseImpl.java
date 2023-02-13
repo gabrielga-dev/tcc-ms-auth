@@ -2,6 +2,7 @@ package br.com.events.msauth.application.useCase.person;
 
 import java.time.LocalDateTime;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import br.com.events.msauth.domain.form.person.create.in.CreatePersonUseCaseForm;
@@ -29,6 +30,7 @@ public class CreatePersonUseCaseImpl implements CreatePersonUseCase {
     private final PersonRepository repository;
     private final EmailValidationRepository emailValidationRepository;
     private final PersonCreationValidator validator;
+    private final PasswordEncoder passwordEncoder;
 
     private final CreatePersonCreationEmailValidationUseCase createPersonCreationEmailValidationUseCase;
     private final SendPersonCreationEmailValidationKafkaMessageUseCase sendPersonCreationEmailValidationKafkaMessageUseCase;
@@ -39,6 +41,8 @@ public class CreatePersonUseCaseImpl implements CreatePersonUseCase {
         validator.validate(param);
 
         var toSave = CreatePersonUseCaseMapper.convertToEntity(param);
+        var encryptedPassword = passwordEncoder.encode(param.getPassword());
+        toSave.setPassword(encryptedPassword);
         toSave.setCreationDate(LocalDateTime.now());
 
         var saved = repository.save(toSave);

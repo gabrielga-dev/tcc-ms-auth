@@ -1,6 +1,7 @@
-package br.com.events.msauth.application.config.requestInterceptors;
+package br.com.events.msauth.application.config.interceptors;
 
 import java.io.IOException;
+import java.util.Objects;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -16,6 +17,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import br.com.events.msauth.application.service.exception.NoPersonWithJwtTokenUuidFoundException;
 import br.com.events.msauth.domain.repository.PersonRepository;
 import br.com.events.msauth.infrastructure.service.JwtTokenService;
+import br.com.events.msauth.util.FilterExceptionUtil;
 import lombok.RequiredArgsConstructor;
 
 /**
@@ -28,18 +30,28 @@ import lombok.RequiredArgsConstructor;
 public class TokenInterceptor extends OncePerRequestFilter {
 
     private final JwtTokenService tokenService;
-
     private final PersonRepository personRepository;
+    private final FilterExceptionUtil filterExceptionUtil;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
         throws ServletException, IOException {
 
-        String token = retrivetoken(request);
-        if (tokenService.isValidToken(token)) {
-            authenticateUser(token);
+        var token = request.getHeader("Authorization");
+
+        if (Objects.isNull(token) || !token.startsWith("Bearer ")) {
+            filterChain.doFilter(request, response);
+            return;
         }
-        filterChain.doFilter(request, response);
+
+        token = extractToken(token);
+
+        if(tokenService.isValidToken(token)){
+            authenticateUser(token);
+            filterChain.doFilter(request, response);
+            return;
+        }
+        filterExceptionUtil.setResponseError(response, new NoPersonWithJwtTokenUuidFoundException());
     }
 
     private void authenticateUser(String token) {
@@ -55,8 +67,7 @@ public class TokenInterceptor extends OncePerRequestFilter {
         SecurityContextHolder.getContext().setAuthentication(authentication);
     }
 
-    private String retrivetoken(HttpServletRequest request) {
-        String token = request.getHeader("Authorization");
+    private String extractToken(String token) {
         if (ObjectUtils.isEmpty(token) || !token.startsWith("Bearer ")) {
             return null;
         }

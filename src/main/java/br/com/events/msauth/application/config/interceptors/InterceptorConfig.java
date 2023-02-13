@@ -1,4 +1,4 @@
-package br.com.events.msauth.application.config.requestInterceptors;
+package br.com.events.msauth.application.config.interceptors;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;

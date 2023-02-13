@@ -1,6 +1,6 @@
 package br.com.events.msauth.application.useCase.person;
 
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import br.com.events.msauth.application.useCase.exception.emailValidation.EmailValidationNotFoundException;
@@ -28,6 +28,7 @@ public class ChangePersonPasswordUseCaseImpl implements ChangePersonPasswordUseC
     private final EmailValidationRepository emailValidationRepository;
     private final PersonRepository personRepository;
     private final ValidateEmailValidationUseCase validateEmailValidationUseCase;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public Void execute(final ChangePersonPasswordUseCaseForm form) {
@@ -41,7 +42,7 @@ public class ChangePersonPasswordUseCaseImpl implements ChangePersonPasswordUseC
         var person = personRepository.findById(emailValidation.getPerson().getUuid())
             .orElseThrow(NoPersonFoundByGivenUuidException::new);
 
-        person.setPassword(new BCryptPasswordEncoder().encode(form.getPassword()));
+        person.setPassword(passwordEncoder.encode(form.getPassword()));
 
         personRepository.save(person);
 
