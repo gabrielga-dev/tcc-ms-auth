@@ -4,6 +4,7 @@ import java.net.URI;
 
 import javax.validation.Valid;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import br.com.events.msauth.domain.entity.type.ServiceType;
 import br.com.events.msauth.domain.form.person.changeEmail.in.ChangePersonEmailForm;
 import br.com.events.msauth.domain.form.person.changePassword.in.ChangePasswordForm;
 import br.com.events.msauth.domain.form.person.create.in.CreatePersonUseCaseForm;
@@ -23,13 +25,16 @@ import br.com.events.msauth.domain.form.person.generateToken.out.GeneratePersonT
 import br.com.events.msauth.domain.form.person.getAuthenticatedPersonInformation.out.GetAuthenticatedPersonInformationResult;
 import br.com.events.msauth.domain.form.person.update.in.UpdatePersonForm;
 import br.com.events.msauth.domain.form.person.update.out.UpdatePersonResult;
+import br.com.events.msauth.domain.mapper.person.AddServiceToPersonUseCaseMapper;
 import br.com.events.msauth.domain.mapper.person.ChangePersonEmailUseCaseMapper;
 import br.com.events.msauth.domain.mapper.person.ChangePersonPasswordUseCaseMapper;
 import br.com.events.msauth.domain.mapper.person.GetAuthenticatedPersonInformationUseCaseMapper;
 import br.com.events.msauth.domain.mapper.person.UpdatePersonUseCaseMapper;
 import br.com.events.msauth.infrastructure.controller.PersonControllerDoc;
+import br.com.events.msauth.infrastructure.useCase.person.AddServiceToPersonUseCase;
 import br.com.events.msauth.infrastructure.useCase.person.ChangePersonEmailUseCase;
 import br.com.events.msauth.infrastructure.useCase.person.ChangePersonPasswordUseCase;
+import br.com.events.msauth.infrastructure.useCase.person.CheckIfPersonIsServiceOwnerUseCase;
 import br.com.events.msauth.infrastructure.useCase.person.CreatePersonUseCase;
 import br.com.events.msauth.infrastructure.useCase.person.GeneratePersonTokenUseCase;
 import br.com.events.msauth.infrastructure.useCase.person.GetAuthenticatedPersonInformationUseCase;
@@ -52,6 +57,8 @@ public class PersonController implements PersonControllerDoc {
     private final UpdatePersonUseCase updatePersonUseCase;
     private final ChangePersonEmailUseCase changePersonEmailUseCase;
     private final GetAuthenticatedPersonInformationUseCase getAuthenticatedPersonInformationUseCase;
+    private final AddServiceToPersonUseCase addServiceToPersonUseCase;
+    private final CheckIfPersonIsServiceOwnerUseCase checkIfPersonIsServiceOwnerUseCase;
 
     /**
      * This endpoint creates a new person on the database with the given data
@@ -124,5 +131,25 @@ public class PersonController implements PersonControllerDoc {
         var mappedResult = GetAuthenticatedPersonInformationUseCaseMapper.convertToResult(result);
 
         return ResponseEntity.ok(mappedResult);
+    }
+
+    @Override
+    @PostMapping("/add-service/{serviceUuid}/{serviceType}")
+    public ResponseEntity<Void> addServiceToPerson(
+        @PathVariable("serviceUuid") String serviceUuid, @PathVariable("serviceType") ServiceType serviceType
+    ) {
+        var useCaseForm = AddServiceToPersonUseCaseMapper.toUseCaseForm(serviceUuid, serviceType);
+
+        addServiceToPersonUseCase.execute(useCaseForm);
+
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+    @Override
+    @GetMapping("/owner/{serviceUuid}")
+    public ResponseEntity<Void> checkIfPersonIsServiceOwner(@PathVariable("serviceUuid") String serviceUuid) {
+        checkIfPersonIsServiceOwnerUseCase.execute(serviceUuid);
+
+        return ResponseEntity.noContent().build();
     }
 }

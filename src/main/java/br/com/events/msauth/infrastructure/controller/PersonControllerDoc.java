@@ -4,6 +4,7 @@ import java.net.URI;
 
 import org.springframework.http.ResponseEntity;
 
+import br.com.events.msauth.domain.entity.type.ServiceType;
 import br.com.events.msauth.domain.form.person.changeEmail.in.ChangePersonEmailForm;
 import br.com.events.msauth.domain.form.person.changePassword.in.ChangePasswordForm;
 import br.com.events.msauth.domain.form.person.create.in.CreatePersonUseCaseForm;
@@ -42,4 +43,12 @@ public interface PersonControllerDoc {
 
     @ApiOperation(value = "Get the information of the authenticated person")
     ResponseEntity<GetAuthenticatedPersonInformationResult> getAuthenticatedPersonInformation();
+
+
+    @ApiOperation(value = "Add the given service to the authenticated person")
+    ResponseEntity<Void> addServiceToPerson(String serviceUuid, ServiceType serviceType);
+
+
+    @ApiOperation(value = "Check if the authenticated person is the owner of the given service")
+    ResponseEntity<Void> checkIfPersonIsServiceOwner(String serviceUuid);
 }
