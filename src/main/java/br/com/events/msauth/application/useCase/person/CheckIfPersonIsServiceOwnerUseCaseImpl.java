@@ -9,6 +9,12 @@ import br.com.events.msauth.domain.repository.ServiceRepository;
 import br.com.events.msauth.infrastructure.useCase.person.CheckIfPersonIsServiceOwnerUseCase;
 import lombok.RequiredArgsConstructor;
 
+/**
+ * This class implements {@link CheckIfPersonIsServiceOwnerUseCase} interface and checks if the authenticated person is
+ * the owner of the given service
+ *
+ * @author Gabriel Guimarães de Almeida
+ */
 @Component
 @RequiredArgsConstructor
 public class CheckIfPersonIsServiceOwnerUseCaseImpl implements CheckIfPersonIsServiceOwnerUseCase {
