@@ -1,10 +1,5 @@
 package br.com.events.msauth.application.useCase.person;
 
-import java.time.LocalDateTime;
-
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Component;
-
 import br.com.events.msauth.domain.form.person.create.in.CreatePersonUseCaseForm;
 import br.com.events.msauth.domain.form.person.create.out.CreatePersonUseCaseResult;
 import br.com.events.msauth.domain.mapper.kafkaMessage.SendPersonCreationEmailValidationKafkaMessageUseCaseMapper;
@@ -16,6 +11,10 @@ import br.com.events.msauth.infrastructure.useCase.kafkaMessage.SendPersonCreati
 import br.com.events.msauth.infrastructure.useCase.person.CreatePersonUseCase;
 import br.com.events.msauth.infrastructure.validation.person.create.PersonCreationValidator;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
+
+import java.time.LocalDateTime;
 
 /**
  * This class implements the {@link CreatePersonUseCase} interface and creates a new person at database, create a new

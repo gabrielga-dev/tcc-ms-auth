@@ -1,15 +1,14 @@
 package br.com.events.msauth.application.useCase.emailValidation.personCreation;
 
-import java.util.stream.Collectors;
-
-import org.springframework.stereotype.Component;
-
 import br.com.events.msauth.application.useCase.exception.person.NoPersonFoundByGivenUuidException;
 import br.com.events.msauth.domain.entity.type.EmailValidationType;
 import br.com.events.msauth.domain.repository.EmailValidationRepository;
 import br.com.events.msauth.domain.repository.PersonRepository;
 import br.com.events.msauth.infrastructure.useCase.emailConfirmation.personCreation.DeleteAllPastPersonCreationEmailValidationUseCase;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
+
+import java.util.stream.Collectors;
 
 /**
  * This class deletes all past person's person creation email validation

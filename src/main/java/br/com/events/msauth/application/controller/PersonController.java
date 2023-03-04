@@ -1,21 +1,5 @@
 package br.com.events.msauth.application.controller;
 
-import java.net.URI;
-
-import javax.validation.Valid;
-
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
 import br.com.events.msauth.domain.entity.type.ServiceType;
 import br.com.events.msauth.domain.form.person.changeEmail.in.ChangePersonEmailForm;
 import br.com.events.msauth.domain.form.person.changePassword.in.ChangePasswordForm;
@@ -40,6 +24,20 @@ import br.com.events.msauth.infrastructure.useCase.person.GeneratePersonTokenUse
 import br.com.events.msauth.infrastructure.useCase.person.GetAuthenticatedPersonInformationUseCase;
 import br.com.events.msauth.infrastructure.useCase.person.UpdatePersonUseCase;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import javax.validation.Valid;
+import java.net.URI;
 
 /**
  * This class shows all person related endpoint on this microservice

@@ -1,11 +1,10 @@
 package br.com.events.msauth.application.config.serializer;
 
-import java.nio.charset.StandardCharsets;
-
-import org.apache.kafka.common.serialization.Serializer;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.apache.kafka.common.serialization.Serializer;
+
+import java.nio.charset.StandardCharsets;
 
 /**
  * This class is used as a string serializer, it will parse ours java objects into json {@link String} those will be set

@@ -1,10 +1,9 @@
 package br.com.events.msauth.domain.mapper.person;
 
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-
 import br.com.events.msauth.domain.form.person.generateToken.in.GeneratePersonTokenForm;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 
 /**
  * This class holds every needed method for mapping person related objects at {@link GeneratePersonTokenForm} class

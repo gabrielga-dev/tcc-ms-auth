@@ -1,7 +1,5 @@
 package br.com.events.msauth.application.useCase.emailValidation.personCreation;
 
-import org.springframework.stereotype.Component;
-
 import br.com.events.msauth.application.useCase.exception.emailValidation.EmailValidationNotFoundException;
 import br.com.events.msauth.domain.entity.type.EmailValidationType;
 import br.com.events.msauth.domain.form.emailValidation.validateEmailValidation.in.ValidateEmailValidationUseCaseForm;
@@ -10,6 +8,7 @@ import br.com.events.msauth.infrastructure.useCase.emailConfirmation.ValidateEma
 import br.com.events.msauth.infrastructure.useCase.emailConfirmation.personCreation.ValidatePersonCreationEmailValidationUseCase;
 import br.com.events.msauth.infrastructure.useCase.person.SetValidStatusOnPersonByEmailValidationsUseCase;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 /**
  * This class implements {@link ValidatePersonCreationEmailValidationUseCase} interface to validate a person's email

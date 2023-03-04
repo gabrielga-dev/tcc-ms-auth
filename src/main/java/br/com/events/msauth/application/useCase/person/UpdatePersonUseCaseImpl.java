@@ -1,9 +1,5 @@
 package br.com.events.msauth.application.useCase.person;
 
-import java.util.Objects;
-
-import org.springframework.stereotype.Component;
-
 import br.com.events.msauth.application.service.AuthenticationService;
 import br.com.events.msauth.application.useCase.exception.person.NoPersonFoundByGivenUuidException;
 import br.com.events.msauth.application.useCase.exception.person.NotAbleToUpdateOtherPersonInformationException;
@@ -13,6 +9,9 @@ import br.com.events.msauth.domain.mapper.person.UpdatePersonUseCaseMapper;
 import br.com.events.msauth.domain.repository.PersonRepository;
 import br.com.events.msauth.infrastructure.useCase.person.UpdatePersonUseCase;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
+
+import java.util.Objects;
 
 /**
  * This class update a person with the incoming new data

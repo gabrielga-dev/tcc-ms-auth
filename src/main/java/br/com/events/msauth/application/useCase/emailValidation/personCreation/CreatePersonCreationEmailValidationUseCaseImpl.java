@@ -1,9 +1,5 @@
 package br.com.events.msauth.application.useCase.emailValidation.personCreation;
 
-import java.time.LocalDateTime;
-
-import org.springframework.stereotype.Component;
-
 import br.com.events.msauth.application.useCase.exception.person.NoPersonFoundByGivenUuidException;
 import br.com.events.msauth.domain.entity.EmailValidation;
 import br.com.events.msauth.domain.entity.type.EmailValidationType;
@@ -12,6 +8,9 @@ import br.com.events.msauth.domain.repository.PersonRepository;
 import br.com.events.msauth.infrastructure.useCase.emailConfirmation.personCreation.CreatePersonCreationEmailValidationUseCase;
 import br.com.events.msauth.infrastructure.useCase.emailConfirmation.personCreation.DeleteAllPastPersonCreationEmailValidationUseCase;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
+
+import java.time.LocalDateTime;
 
 /**
  * This class implements the {@link CreatePersonCreationEmailValidationUseCase} interface to create a new email

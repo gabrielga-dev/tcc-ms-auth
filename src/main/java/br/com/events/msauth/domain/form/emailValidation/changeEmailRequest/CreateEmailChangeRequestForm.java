@@ -1,13 +1,13 @@
 package br.com.events.msauth.domain.form.emailValidation.changeEmailRequest;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 /**
  * This class hold the person's uuid that will be used to create a new email change request

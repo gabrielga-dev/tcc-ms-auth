@@ -1,7 +1,10 @@
 package br.com.events.msauth.application.validation.person.create;
 
-import java.util.Optional;
-
+import br.com.events.msauth.application.validation.person.create.exception.PersonCreationEmailAvailableException;
+import br.com.events.msauth.domain.entity.Person;
+import br.com.events.msauth.domain.form.person.create.in.CreatePersonUseCaseForm;
+import br.com.events.msauth.domain.repository.PersonRepository;
+import br.com.events.msauth.util.constants.TestConstants;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -12,11 +15,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import br.com.events.msauth.application.validation.person.create.exception.PersonCreationEmailAvailableException;
-import br.com.events.msauth.domain.entity.Person;
-import br.com.events.msauth.domain.form.person.create.in.CreatePersonUseCaseForm;
-import br.com.events.msauth.domain.repository.PersonRepository;
-import br.com.events.msauth.util.constants.TestConstants;
+import java.util.Optional;
 
 /**
  * This class holds every needed test for {@link PersonCreationEmailAvailableValidation}

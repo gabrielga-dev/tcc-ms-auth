@@ -1,9 +1,5 @@
 package br.com.events.msauth.application.useCase.person;
 
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.core.AuthenticationException;
-import org.springframework.stereotype.Component;
-
 import br.com.events.msauth.application.useCase.exception.person.InvalidCredentialsToGenerateJwtTokenException;
 import br.com.events.msauth.domain.form.person.generateToken.in.GeneratePersonTokenForm;
 import br.com.events.msauth.domain.form.person.generateToken.out.GeneratePersonTokenResult;
@@ -11,6 +7,9 @@ import br.com.events.msauth.domain.mapper.person.GeneratePersonTokenFormMapper;
 import br.com.events.msauth.infrastructure.service.JwtTokenService;
 import br.com.events.msauth.infrastructure.useCase.person.GeneratePersonTokenUseCase;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.stereotype.Component;
 
 /**
  * This class implements the {@link GeneratePersonTokenUseCase} interface to generate a person's JWT token

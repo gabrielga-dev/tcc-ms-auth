@@ -1,8 +1,5 @@
 package br.com.events.msauth.application.useCase.kafkaMessage;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
-
 import br.com.events.msauth.application.dispatcher.KafkaDispatcher;
 import br.com.events.msauth.domain.form.kafkaMessage.sendEmailChangedEmailValidationKafkaMessage.in.SendEmailChangedEmailValidationKafkaMessageUseCaseForm;
 import br.com.events.msauth.domain.mapper.kafkaMessage.SendEmailChangedEmailValidationKafkaMessageUseCaseMapper;
@@ -10,6 +7,8 @@ import br.com.events.msauth.domain.message.EmailChangedEmailRequestKafkaMessage;
 import br.com.events.msauth.infrastructure.useCase.kafkaMessage.SendEmailChangedEmailValidationKafkaMessageUseCase;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 /**
  * This class implements {@link SendEmailChangedEmailValidationKafkaMessageUseCase} interface and sends a kafka message

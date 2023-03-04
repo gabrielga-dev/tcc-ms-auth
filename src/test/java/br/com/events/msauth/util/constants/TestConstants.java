@@ -1,12 +1,12 @@
 package br.com.events.msauth.util.constants;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.util.Date;
-
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class TestConstants {

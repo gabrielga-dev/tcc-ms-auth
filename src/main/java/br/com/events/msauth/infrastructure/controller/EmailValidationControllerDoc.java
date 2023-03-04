@@ -1,11 +1,10 @@
 package br.com.events.msauth.infrastructure.controller;
 
-import org.springframework.http.ResponseEntity;
-
 import br.com.events.msauth.domain.form.emailValidation.changeEmailRequest.CreateEmailChangeRequestForm;
 import br.com.events.msauth.domain.form.emailValidation.passwordChangeRequest.in.CreatePasswordChangeRequestForm;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.http.ResponseEntity;
 
 /**
  * This interface dictates which endpoints will be needed for implementation and holds which one's Swagger

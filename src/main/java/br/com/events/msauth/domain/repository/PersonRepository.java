@@ -1,11 +1,10 @@
 package br.com.events.msauth.domain.repository;
 
-import java.util.Optional;
-
+import br.com.events.msauth.domain.entity.Person;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import br.com.events.msauth.domain.entity.Person;
+import java.util.Optional;
 
 /**
  * This interface makes the connection to the person database table

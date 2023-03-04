@@ -1,15 +1,14 @@
 package br.com.events.msauth.application.service;
 
+import br.com.events.msauth.application.service.exception.NoPersonWithGivenEmailFoundException;
+import br.com.events.msauth.domain.entity.Person;
+import br.com.events.msauth.domain.repository.PersonRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
-import br.com.events.msauth.application.service.exception.NoPersonWithGivenEmailFoundException;
-import br.com.events.msauth.domain.entity.Person;
-import br.com.events.msauth.domain.repository.PersonRepository;
-import lombok.RequiredArgsConstructor;
 
 /**
  * This class implements the {@link UserDetailsService} interface so it can load a person from the database by its

@@ -1,10 +1,9 @@
 package br.com.events.msauth.application.config.interceptors;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-
-import lombok.RequiredArgsConstructor;
 
 /**
  * This class tells with interceptor will act at each request
