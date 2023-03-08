@@ -1,11 +1,10 @@
 package br.com.events.msauth.application.useCase.emailValidation;
 
-import org.springframework.stereotype.Component;
-
 import br.com.events.msauth.application.useCase.exception.emailValidation.EmailValidationNotFoundException;
 import br.com.events.msauth.domain.repository.EmailValidationRepository;
 import br.com.events.msauth.infrastructure.useCase.emailConfirmation.CheckIfEmailValidationExistsAndIsNotValidatedUseCase;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 /**
  * This implements {@link CheckIfEmailValidationExistsAndIsNotValidatedUseCase} interface to check if an email validation exists

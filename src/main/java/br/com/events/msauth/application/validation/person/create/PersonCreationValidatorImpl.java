@@ -1,13 +1,12 @@
 package br.com.events.msauth.application.validation.person.create;
 
-import java.util.List;
-
-import org.springframework.stereotype.Component;
-
 import br.com.events.msauth.domain.form.person.create.in.CreatePersonUseCaseForm;
 import br.com.events.msauth.infrastructure.validation.person.create.PersonCreationValidation;
 import br.com.events.msauth.infrastructure.validation.person.create.PersonCreationValidator;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 /**
  * This class implements {@link PersonCreationValidator} and applies all needed validations for

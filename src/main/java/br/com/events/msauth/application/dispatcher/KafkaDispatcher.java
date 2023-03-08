@@ -1,15 +1,14 @@
 package br.com.events.msauth.application.dispatcher;
 
-import java.io.Closeable;
-import java.util.Properties;
-
+import br.com.events.msauth.application.config.serializer.GsonSerializer;
 import org.apache.kafka.clients.producer.Callback;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.StringSerializer;
 
-import br.com.events.msauth.application.config.serializer.GsonSerializer;
+import java.io.Closeable;
+import java.util.Properties;
 
 /**
  * This class dispatches kafka messages of any given java class

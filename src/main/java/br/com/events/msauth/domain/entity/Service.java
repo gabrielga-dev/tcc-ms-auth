@@ -1,5 +1,11 @@
 package br.com.events.msauth.domain.entity;
 
+import br.com.events.msauth.domain.entity.pk.ServicePk;
+import br.com.events.msauth.domain.entity.type.ServiceType;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -9,12 +15,6 @@ import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.Table;
-
-import br.com.events.msauth.domain.entity.pk.ServicePk;
-import br.com.events.msauth.domain.entity.type.ServiceType;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 /**
  * This class represents the service's database table

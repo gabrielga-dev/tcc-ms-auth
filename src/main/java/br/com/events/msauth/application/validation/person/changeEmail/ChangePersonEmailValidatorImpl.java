@@ -1,13 +1,12 @@
 package br.com.events.msauth.application.validation.person.changeEmail;
 
-import java.util.List;
-
-import org.springframework.stereotype.Component;
-
 import br.com.events.msauth.domain.form.person.changeEmail.in.ChangeEmailRequestUseCaseForm;
 import br.com.events.msauth.infrastructure.validation.person.changeEmail.ChangePersonEmailValidation;
 import br.com.events.msauth.infrastructure.validation.person.changeEmail.ChangePersonEmailValidator;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 /**
  * This class calls the needed validations to validate the new person's email

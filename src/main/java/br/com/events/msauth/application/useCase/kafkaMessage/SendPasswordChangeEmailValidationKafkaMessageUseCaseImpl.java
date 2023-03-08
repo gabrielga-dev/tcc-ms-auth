@@ -1,8 +1,5 @@
 package br.com.events.msauth.application.useCase.kafkaMessage;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
-
 import br.com.events.msauth.application.dispatcher.KafkaDispatcher;
 import br.com.events.msauth.domain.form.kafkaMessage.sendPasswordChangeEmailValidationKafkaMessageUseCase.in.SendPasswordChangeEmailValidationKafkaMessageUseCaseForm;
 import br.com.events.msauth.domain.mapper.kafkaMessage.SendPasswordChangeEmailValidationKafkaMessageUseCaseMapper;
@@ -10,6 +7,8 @@ import br.com.events.msauth.domain.message.PasswordChangeEmailValidationEmailReq
 import br.com.events.msauth.infrastructure.useCase.kafkaMessage.SendPasswordChangeEmailValidationKafkaMessageUseCase;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 /**
  * This class sends a kafka message about password change

@@ -1,13 +1,12 @@
 package br.com.events.msauth.application.useCase.person;
 
-import org.springframework.stereotype.Component;
-
 import br.com.events.msauth.application.service.AuthenticationService;
 import br.com.events.msauth.application.useCase.exception.person.PersonIsIsNotTheServiceOwnerException;
 import br.com.events.msauth.domain.entity.pk.ServicePk;
 import br.com.events.msauth.domain.repository.ServiceRepository;
 import br.com.events.msauth.infrastructure.useCase.person.CheckIfPersonIsServiceOwnerUseCase;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 /**
  * This class implements {@link CheckIfPersonIsServiceOwnerUseCase} interface and checks if the authenticated person is

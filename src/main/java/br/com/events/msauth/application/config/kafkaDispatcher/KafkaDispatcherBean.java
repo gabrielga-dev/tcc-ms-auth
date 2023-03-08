@@ -1,15 +1,14 @@
 package br.com.events.msauth.application.config.kafkaDispatcher;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-
 import br.com.events.msauth.application.dispatcher.KafkaDispatcher;
 import br.com.events.msauth.domain.message.EmailChangeRequestEmailValidationEmailRequestKafkaMessage;
 import br.com.events.msauth.domain.message.EmailChangedEmailRequestKafkaMessage;
 import br.com.events.msauth.domain.message.PasswordChangeEmailValidationEmailRequestKafkaMessage;
 import br.com.events.msauth.domain.message.PersonCreationEmailValidationEmailRequestKafkaMessage;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 /**
  * This configuration class creates the beans of kafka dispatchers for orders and emails

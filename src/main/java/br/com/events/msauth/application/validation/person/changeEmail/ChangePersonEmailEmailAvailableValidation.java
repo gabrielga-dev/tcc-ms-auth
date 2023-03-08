@@ -1,9 +1,5 @@
 package br.com.events.msauth.application.validation.person.changeEmail;
 
-import java.util.Objects;
-
-import org.springframework.stereotype.Component;
-
 import br.com.events.msauth.application.validation.person.changeEmail.exception.ChangePersonEmailEmailNotAvailableException;
 import br.com.events.msauth.domain.entity.Person;
 import br.com.events.msauth.domain.entity.type.EmailValidationType;
@@ -11,6 +7,9 @@ import br.com.events.msauth.domain.form.person.changeEmail.in.ChangeEmailRequest
 import br.com.events.msauth.domain.repository.PersonRepository;
 import br.com.events.msauth.infrastructure.validation.person.changeEmail.ChangePersonEmailValidation;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
+
+import java.util.Objects;
 
 /**
  * This class checks if the incoming new email is available

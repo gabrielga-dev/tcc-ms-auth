@@ -1,13 +1,12 @@
 package br.com.events.msauth.application.useCase.person;
 
-import java.util.Objects;
-
-import org.springframework.stereotype.Component;
-
 import br.com.events.msauth.application.useCase.exception.person.NoPersonFoundByGivenUuidException;
 import br.com.events.msauth.domain.repository.PersonRepository;
 import br.com.events.msauth.infrastructure.useCase.person.SetValidStatusOnPersonByEmailValidationsUseCase;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
+
+import java.util.Objects;
 
 /**
  * This interface checks if the person account is valid and then update it

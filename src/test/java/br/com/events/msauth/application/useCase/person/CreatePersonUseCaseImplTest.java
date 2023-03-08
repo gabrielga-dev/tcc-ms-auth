@@ -1,9 +1,10 @@
 package br.com.events.msauth.application.useCase.person;
 
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.when;
-
+import br.com.events.msauth.domain.entity.Person;
+import br.com.events.msauth.domain.form.person.create.in.CreatePersonUseCaseForm;
+import br.com.events.msauth.domain.repository.PersonRepository;
+import br.com.events.msauth.infrastructure.validation.person.create.PersonCreationValidator;
+import br.com.events.msauth.util.constants.TestConstants;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -12,11 +13,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import br.com.events.msauth.domain.entity.Person;
-import br.com.events.msauth.domain.form.person.create.in.CreatePersonUseCaseForm;
-import br.com.events.msauth.domain.repository.PersonRepository;
-import br.com.events.msauth.infrastructure.validation.person.create.PersonCreationValidator;
-import br.com.events.msauth.util.constants.TestConstants;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.when;
 
 /**
  * This class holds every needed test for {@link CreatePersonUseCaseImpl}

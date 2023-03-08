@@ -1,7 +1,5 @@
 package br.com.events.msauth.application.useCase.person;
 
-import org.springframework.stereotype.Component;
-
 import br.com.events.msauth.application.service.AuthenticationService;
 import br.com.events.msauth.application.useCase.exception.person.NoPersonFoundByGivenUuidException;
 import br.com.events.msauth.domain.entity.Service;
@@ -11,6 +9,7 @@ import br.com.events.msauth.domain.repository.PersonRepository;
 import br.com.events.msauth.domain.repository.ServiceRepository;
 import br.com.events.msauth.infrastructure.useCase.person.AddServiceToPersonUseCase;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 /**
  * This class implements the {@link AddServiceToPersonUseCase} interface and add the given service to the authenticated

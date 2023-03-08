@@ -1,7 +1,5 @@
 package br.com.events.msauth.application.useCase.person;
 
-import org.springframework.stereotype.Component;
-
 import br.com.events.msauth.application.useCase.exception.emailValidation.EmailValidationNotFoundException;
 import br.com.events.msauth.application.useCase.exception.person.NoPersonFoundByGivenEmailException;
 import br.com.events.msauth.domain.entity.type.EmailValidationType;
@@ -15,6 +13,7 @@ import br.com.events.msauth.infrastructure.useCase.kafkaMessage.SendEmailChanged
 import br.com.events.msauth.infrastructure.useCase.person.ChangePersonEmailUseCase;
 import br.com.events.msauth.infrastructure.validation.person.changeEmail.ChangePersonEmailValidator;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 /**
  * This class implements {@link ChangePersonEmailUseCase} to change a person email

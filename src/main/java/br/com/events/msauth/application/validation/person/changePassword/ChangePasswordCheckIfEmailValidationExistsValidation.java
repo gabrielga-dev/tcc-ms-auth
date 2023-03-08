@@ -1,12 +1,11 @@
 package br.com.events.msauth.application.validation.person.changePassword;
 
-import org.springframework.stereotype.Component;
-
 import br.com.events.msauth.application.validation.person.create.exception.PersonCreationPasswordEqualityException;
 import br.com.events.msauth.domain.form.person.changePassword.in.ChangePersonPasswordUseCaseForm;
 import br.com.events.msauth.infrastructure.useCase.emailConfirmation.CheckIfEmailValidationExistsAndIsNotValidatedUseCase;
 import br.com.events.msauth.infrastructure.validation.person.changePassword.ChangePersonPasswordValidation;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 /**
  * This class implements the {@link ChangePersonPasswordValidation} and validate if the incoming passwords

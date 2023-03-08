@@ -1,14 +1,13 @@
 package br.com.events.msauth.application.useCase.emailValidation;
 
-import java.time.LocalDateTime;
-
-import org.springframework.stereotype.Component;
-
 import br.com.events.msauth.application.useCase.exception.emailValidation.EmailValidationNotFoundException;
 import br.com.events.msauth.domain.form.emailValidation.validateEmailValidation.in.ValidateEmailValidationUseCaseForm;
 import br.com.events.msauth.domain.repository.EmailValidationRepository;
 import br.com.events.msauth.infrastructure.useCase.emailConfirmation.ValidateEmailValidationUseCase;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
+
+import java.time.LocalDateTime;
 
 @Component
 @RequiredArgsConstructor

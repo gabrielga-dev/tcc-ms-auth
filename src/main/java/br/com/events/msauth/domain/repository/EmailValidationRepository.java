@@ -1,13 +1,12 @@
 package br.com.events.msauth.domain.repository;
 
-import java.util.List;
-import java.util.Optional;
-
+import br.com.events.msauth.domain.entity.EmailValidation;
+import br.com.events.msauth.domain.entity.type.EmailValidationType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import br.com.events.msauth.domain.entity.EmailValidation;
-import br.com.events.msauth.domain.entity.type.EmailValidationType;
+import java.util.List;
+import java.util.Optional;
 
 /**
  * This interface makes the connection to the Email Validation database table

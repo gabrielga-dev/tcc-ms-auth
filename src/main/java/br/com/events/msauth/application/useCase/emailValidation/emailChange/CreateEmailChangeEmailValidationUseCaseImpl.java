@@ -1,9 +1,5 @@
 package br.com.events.msauth.application.useCase.emailValidation.emailChange;
 
-import java.time.LocalDateTime;
-
-import org.springframework.stereotype.Component;
-
 import br.com.events.msauth.application.useCase.exception.person.NoPersonFoundByGivenEmailException;
 import br.com.events.msauth.domain.entity.EmailValidation;
 import br.com.events.msauth.domain.entity.type.EmailValidationType;
@@ -13,6 +9,9 @@ import br.com.events.msauth.domain.repository.PersonRepository;
 import br.com.events.msauth.infrastructure.useCase.emailConfirmation.emailChange.CreateEmailChangeEmailValidationUseCase;
 import br.com.events.msauth.infrastructure.useCase.kafkaMessage.SendEmailChangeRequestEmailValidationKafkaMessageUseCase;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
+
+import java.time.LocalDateTime;
 
 /**
  * This class implements the {@link CreateEmailChangeEmailValidationUseCase} interface and creates a new email

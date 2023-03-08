@@ -1,12 +1,11 @@
 package br.com.events.msauth.application.validation.person.create;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-
 import br.com.events.msauth.application.validation.person.create.exception.PersonCreationPasswordEqualityException;
 import br.com.events.msauth.domain.form.person.create.in.CreatePersonUseCaseForm;
 import br.com.events.msauth.util.constants.TestConstants;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 /**
  * This class holds every needed test for {@link PersonCreationPasswordsEqualityValidation}

@@ -1,8 +1,5 @@
 package br.com.events.msauth.application.useCase.person;
 
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Component;
-
 import br.com.events.msauth.application.useCase.exception.emailValidation.EmailValidationNotFoundException;
 import br.com.events.msauth.application.useCase.exception.person.NoPersonFoundByGivenUuidException;
 import br.com.events.msauth.domain.entity.type.EmailValidationType;
@@ -14,6 +11,8 @@ import br.com.events.msauth.infrastructure.useCase.emailConfirmation.ValidateEma
 import br.com.events.msauth.infrastructure.useCase.person.ChangePersonPasswordUseCase;
 import br.com.events.msauth.infrastructure.validation.person.changePassword.ChangePersonPasswordValidator;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
 
 /**
  * This class changes a person password

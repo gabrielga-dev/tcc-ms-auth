@@ -1,14 +1,13 @@
 package br.com.events.msauth.application.validation.person.create;
 
-import java.util.List;
-
+import br.com.events.msauth.domain.form.person.create.in.CreatePersonUseCaseForm;
+import br.com.events.msauth.infrastructure.validation.person.create.PersonCreationValidation;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import br.com.events.msauth.domain.form.person.create.in.CreatePersonUseCaseForm;
-import br.com.events.msauth.infrastructure.validation.person.create.PersonCreationValidation;
+import java.util.List;
 
 /**
  * This class holds every needed test for {@link PersonCreationValidatorImpl}

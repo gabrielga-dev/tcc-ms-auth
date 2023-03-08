@@ -1,7 +1,13 @@
 package br.com.events.msauth.application.controller;
 
-import javax.validation.Valid;
-
+import br.com.events.msauth.domain.form.emailValidation.changeEmailRequest.CreateEmailChangeRequestForm;
+import br.com.events.msauth.domain.form.emailValidation.passwordChangeRequest.in.CreatePasswordChangeRequestForm;
+import br.com.events.msauth.infrastructure.controller.EmailValidationControllerDoc;
+import br.com.events.msauth.infrastructure.useCase.emailConfirmation.CheckIfEmailValidationExistsAndIsNotValidatedUseCase;
+import br.com.events.msauth.infrastructure.useCase.emailConfirmation.emailChange.CreateEmailChangeEmailValidationUseCase;
+import br.com.events.msauth.infrastructure.useCase.emailConfirmation.passwordChange.CreatePasswordChangeEmailValidationUseCase;
+import br.com.events.msauth.infrastructure.useCase.emailConfirmation.personCreation.ValidatePersonCreationEmailValidationUseCase;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -11,14 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.events.msauth.domain.form.emailValidation.changeEmailRequest.CreateEmailChangeRequestForm;
-import br.com.events.msauth.domain.form.emailValidation.passwordChangeRequest.in.CreatePasswordChangeRequestForm;
-import br.com.events.msauth.infrastructure.controller.EmailValidationControllerDoc;
-import br.com.events.msauth.infrastructure.useCase.emailConfirmation.CheckIfEmailValidationExistsAndIsNotValidatedUseCase;
-import br.com.events.msauth.infrastructure.useCase.emailConfirmation.emailChange.CreateEmailChangeEmailValidationUseCase;
-import br.com.events.msauth.infrastructure.useCase.emailConfirmation.passwordChange.CreatePasswordChangeEmailValidationUseCase;
-import br.com.events.msauth.infrastructure.useCase.emailConfirmation.personCreation.ValidatePersonCreationEmailValidationUseCase;
-import lombok.RequiredArgsConstructor;
+import javax.validation.Valid;
 
 /**
  * This class shows all email validation related endpoint on this microservice
