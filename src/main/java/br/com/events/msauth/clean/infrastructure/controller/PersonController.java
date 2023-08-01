@@ -19,7 +19,7 @@ import br.com.events.msauth.legacy.infrastructure.useCase.person.AddServiceToPer
 import br.com.events.msauth.legacy.infrastructure.useCase.person.ChangePersonEmailUseCase;
 import br.com.events.msauth.legacy.infrastructure.useCase.person.ChangePersonPasswordUseCase;
 import br.com.events.msauth.legacy.infrastructure.useCase.person.CheckIfPersonIsServiceOwnerUseCase;
-import br.com.events.msauth.clean.process.use_case.person.interfaces.CreatePersonUseCase;
+import br.com.events.msauth.clean.process.person.create._use_case.interfaces.CreatePersonUseCase;
 import br.com.events.msauth.legacy.infrastructure.useCase.person.GeneratePersonTokenUseCase;
 import br.com.events.msauth.legacy.infrastructure.useCase.person.GetAuthenticatedPersonInformationUseCase;
 import br.com.events.msauth.legacy.infrastructure.useCase.person.UpdatePersonUseCase;

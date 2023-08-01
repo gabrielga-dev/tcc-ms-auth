@@ -3,7 +3,7 @@ package br.com.events.msauth.legacy.domain.mapper.person;
 import br.com.events.msauth.clean.domain.entity.Person;
 import br.com.events.msauth.clean.infrastructure.controller.entity.person.create.CreatePersonForm;
 import br.com.events.msauth.legacy.domain.form.person.create.out.CreatePersonUseCaseResult;
-import br.com.events.msauth.clean.process.use_case.person.interfaces.CreatePersonUseCase;
+import br.com.events.msauth.clean.process.person.create._use_case.interfaces.CreatePersonUseCase;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 

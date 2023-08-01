@@ -3,7 +3,7 @@ package br.com.events.msauth.legacy.application.useCase.kafkaMessage;
 import br.com.events.msauth.legacy.application.dispatcher.KafkaDispatcher;
 import br.com.events.msauth.legacy.domain.form.kafkaMessage.sendEmailChangeRequestEmailValidationKafkaMessage.in.SendEmailChangeRequestEmailValidationKafkaMessageUseCaseForm;
 import br.com.events.msauth.legacy.domain.mapper.kafkaMessage.SendEmailChangeEmailValidationKafkaMessageUseCaseMapper;
-import br.com.events.msauth.clean.domain.dto.kafka.message.EmailChangeRequestEmailValidationEmailRequestKafkaMessage;
+import br.com.events.msauth.clean.domain.dto.kafka.EmailChangeRequestEmailValidationEmailRequestKafkaMessage;
 import br.com.events.msauth.legacy.infrastructure.useCase.kafkaMessage.SendEmailChangeRequestEmailValidationKafkaMessageUseCase;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

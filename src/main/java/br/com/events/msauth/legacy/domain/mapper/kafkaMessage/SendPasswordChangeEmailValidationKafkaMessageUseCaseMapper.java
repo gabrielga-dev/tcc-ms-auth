@@ -4,7 +4,7 @@ package br.com.events.msauth.legacy.domain.mapper.kafkaMessage;
 import br.com.events.msauth.clean.domain.entity.Person;
 import br.com.events.msauth.legacy.domain.form.kafkaMessage.sendPasswordChangeEmailValidationKafkaMessageUseCase.in.SendPasswordChangeEmailValidationKafkaMessageUseCaseForm;
 import br.com.events.msauth.clean.domain.type.EmailTemplateIdType;
-import br.com.events.msauth.clean.domain.dto.kafka.message.PasswordChangeEmailValidationEmailRequestKafkaMessage;
+import br.com.events.msauth.clean.domain.dto.kafka.PasswordChangeEmailValidationEmailRequestKafkaMessage;
 import br.com.events.msauth.legacy.infrastructure.useCase.kafkaMessage.SendPasswordChangeEmailValidationKafkaMessageUseCase;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
