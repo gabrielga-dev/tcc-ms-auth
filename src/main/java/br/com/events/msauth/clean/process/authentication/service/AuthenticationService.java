@@ -1,6 +1,6 @@
-package br.com.events.msauth.legacy.application.service;
+package br.com.events.msauth.clean.process.authentication.service;
 
-import br.com.events.msauth.legacy.application.service.exception.NoPersonWithGivenEmailFoundException;
+import br.com.events.msauth.clean.domain.exception._process.authentication.NoPersonWithGivenEmailFoundException;
 import br.com.events.msauth.clean.domain.entity.Person;
 import br.com.events.msauth.legacy.domain.repository.PersonRepository;
 import lombok.RequiredArgsConstructor;

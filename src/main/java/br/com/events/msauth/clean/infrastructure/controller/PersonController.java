@@ -11,17 +11,16 @@ import br.com.events.msauth.clean.process.person.create._use_case.interfaces.Cre
 import br.com.events.msauth.clean.process.person.generate_token._use_case.interfaces.GeneratePersonTokenUseCase;
 import br.com.events.msauth.legacy.domain.form.person.changeEmail.in.ChangePersonEmailForm;
 import br.com.events.msauth.legacy.domain.form.person.getAuthenticatedPersonInformation.out.GetAuthenticatedPersonInformationResult;
-import br.com.events.msauth.legacy.domain.form.person.update.in.UpdatePersonForm;
-import br.com.events.msauth.legacy.domain.form.person.update.out.UpdatePersonResult;
+import br.com.events.msauth.clean.infrastructure.controller.entity.person.update.in.UpdatePersonForm;
+import br.com.events.msauth.clean.infrastructure.controller.entity.person.update.out.UpdatePersonResult;
 import br.com.events.msauth.legacy.domain.mapper.person.AddServiceToPersonUseCaseMapper;
 import br.com.events.msauth.legacy.domain.mapper.person.ChangePersonEmailUseCaseMapper;
 import br.com.events.msauth.legacy.domain.mapper.person.GetAuthenticatedPersonInformationUseCaseMapper;
-import br.com.events.msauth.legacy.domain.mapper.person.UpdatePersonUseCaseMapper;
 import br.com.events.msauth.legacy.infrastructure.useCase.person.AddServiceToPersonUseCase;
 import br.com.events.msauth.legacy.infrastructure.useCase.person.ChangePersonEmailUseCase;
 import br.com.events.msauth.legacy.infrastructure.useCase.person.CheckIfPersonIsServiceOwnerUseCase;
 import br.com.events.msauth.legacy.infrastructure.useCase.person.GetAuthenticatedPersonInformationUseCase;
-import br.com.events.msauth.legacy.infrastructure.useCase.person.UpdatePersonUseCase;
+import br.com.events.msauth.clean.process.person.update._use_case.interfaces.UpdatePersonUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -50,10 +49,10 @@ public class PersonController implements PersonControllerDoc {
 
     private final CreatePersonUseCase createPersonUseCase;
     private final GeneratePersonTokenUseCase generatePersonTokenUseCase;
-
     private final ChangePersonPasswordUseCase changePersonPasswordUseCase;
 
     private final UpdatePersonUseCase updatePersonUseCase;
+
     private final ChangePersonEmailUseCase changePersonEmailUseCase;
     private final GetAuthenticatedPersonInformationUseCase getAuthenticatedPersonInformationUseCase;
     private final AddServiceToPersonUseCase addServiceToPersonUseCase;
@@ -98,10 +97,7 @@ public class PersonController implements PersonControllerDoc {
         @PathVariable("uuid") String personUuid,
         @RequestBody @Valid final UpdatePersonForm updatePersonForm
     ) {
-        var useCaseForm = UpdatePersonUseCaseMapper.convertToUseCaseForm(updatePersonForm);
-        useCaseForm.setPersonUuid(personUuid);
-
-        var result = updatePersonUseCase.execute(useCaseForm);
+        var result = updatePersonUseCase.execute(personUuid, updatePersonForm);
         return ResponseEntity.ok(result);
     }
 

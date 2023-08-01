@@ -1,6 +1,6 @@
 package br.com.events.msauth.legacy.application.useCase.person;
 
-import br.com.events.msauth.legacy.application.service.AuthenticationService;
+import br.com.events.msauth.clean.process.authentication.service.AuthenticationService;
 import br.com.events.msauth.legacy.application.useCase.exception.person.NoPersonFoundByGivenUuidException;
 import br.com.events.msauth.clean.domain.entity.Service;
 import br.com.events.msauth.clean.domain.entity.pk.ServicePk;

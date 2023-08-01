@@ -1,6 +1,6 @@
 package br.com.events.msauth.legacy.application.useCase.person;
 
-import br.com.events.msauth.legacy.application.service.AuthenticationService;
+import br.com.events.msauth.clean.process.authentication.service.AuthenticationService;
 import br.com.events.msauth.legacy.application.useCase.exception.person.PersonIsIsNotTheServiceOwnerException;
 import br.com.events.msauth.clean.domain.entity.pk.ServicePk;
 import br.com.events.msauth.legacy.domain.repository.ServiceRepository;

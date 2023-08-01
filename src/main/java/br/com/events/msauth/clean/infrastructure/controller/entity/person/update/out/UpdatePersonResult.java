@@ -1,4 +1,4 @@
-package br.com.events.msauth.legacy.domain.form.person.update.out;
+package br.com.events.msauth.clean.infrastructure.controller.entity.person.update.out;
 
 import lombok.Builder;
 import lombok.Getter;

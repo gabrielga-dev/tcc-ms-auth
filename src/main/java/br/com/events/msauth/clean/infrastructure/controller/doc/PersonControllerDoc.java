@@ -7,8 +7,8 @@ import br.com.events.msauth.clean.infrastructure.controller.entity.person.genera
 import br.com.events.msauth.clean.infrastructure.controller.entity.person.generate_token.out.GeneratePersonTokenResult;
 import br.com.events.msauth.legacy.domain.form.person.changeEmail.in.ChangePersonEmailForm;
 import br.com.events.msauth.legacy.domain.form.person.getAuthenticatedPersonInformation.out.GetAuthenticatedPersonInformationResult;
-import br.com.events.msauth.legacy.domain.form.person.update.in.UpdatePersonForm;
-import br.com.events.msauth.legacy.domain.form.person.update.out.UpdatePersonResult;
+import br.com.events.msauth.clean.infrastructure.controller.entity.person.update.in.UpdatePersonForm;
+import br.com.events.msauth.clean.infrastructure.controller.entity.person.update.out.UpdatePersonResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.http.ResponseEntity;

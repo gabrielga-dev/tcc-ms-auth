@@ -1,4 +1,4 @@
-package br.com.events.msauth.legacy.application.service.exception;
+package br.com.events.msauth.clean.domain.exception._process.authentication;
 
 import br.com.events.msauth.clean.domain.exception.badRequest.BadRequestException;
 
