@@ -1,6 +1,6 @@
 package br.com.events.msauth.legacy.domain.mapper.person;
 
-import br.com.events.msauth.legacy.domain.form.person.generateToken.in.GeneratePersonTokenForm;
+import br.com.events.msauth.clean.infrastructure.controller.entity.person.generate_token.in.GeneratePersonTokenForm;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

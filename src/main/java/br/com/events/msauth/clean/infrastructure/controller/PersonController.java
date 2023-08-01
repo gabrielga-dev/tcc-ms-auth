@@ -1,26 +1,25 @@
 package br.com.events.msauth.clean.infrastructure.controller;
 
 import br.com.events.msauth.clean.domain.entity.type.ServiceType;
+import br.com.events.msauth.clean.infrastructure.controller.doc.PersonControllerDoc;
+import br.com.events.msauth.clean.infrastructure.controller.entity.person.change_password.in.ChangePasswordForm;
+import br.com.events.msauth.clean.infrastructure.controller.entity.person.create.in.CreatePersonForm;
+import br.com.events.msauth.clean.infrastructure.controller.entity.person.generate_token.in.GeneratePersonTokenForm;
+import br.com.events.msauth.clean.infrastructure.controller.entity.person.generate_token.out.GeneratePersonTokenResult;
+import br.com.events.msauth.clean.process.person.change_password._use_case.interfaces.ChangePersonPasswordUseCase;
+import br.com.events.msauth.clean.process.person.create._use_case.interfaces.CreatePersonUseCase;
+import br.com.events.msauth.clean.process.person.generate_token._use_case.interfaces.GeneratePersonTokenUseCase;
 import br.com.events.msauth.legacy.domain.form.person.changeEmail.in.ChangePersonEmailForm;
-import br.com.events.msauth.legacy.domain.form.person.changePassword.in.ChangePasswordForm;
-import br.com.events.msauth.clean.infrastructure.controller.entity.person.create.CreatePersonForm;
-import br.com.events.msauth.legacy.domain.form.person.generateToken.in.GeneratePersonTokenForm;
-import br.com.events.msauth.legacy.domain.form.person.generateToken.out.GeneratePersonTokenResult;
 import br.com.events.msauth.legacy.domain.form.person.getAuthenticatedPersonInformation.out.GetAuthenticatedPersonInformationResult;
 import br.com.events.msauth.legacy.domain.form.person.update.in.UpdatePersonForm;
 import br.com.events.msauth.legacy.domain.form.person.update.out.UpdatePersonResult;
 import br.com.events.msauth.legacy.domain.mapper.person.AddServiceToPersonUseCaseMapper;
 import br.com.events.msauth.legacy.domain.mapper.person.ChangePersonEmailUseCaseMapper;
-import br.com.events.msauth.legacy.domain.mapper.person.ChangePersonPasswordUseCaseMapper;
 import br.com.events.msauth.legacy.domain.mapper.person.GetAuthenticatedPersonInformationUseCaseMapper;
 import br.com.events.msauth.legacy.domain.mapper.person.UpdatePersonUseCaseMapper;
-import br.com.events.msauth.clean.infrastructure.controller.doc.PersonControllerDoc;
 import br.com.events.msauth.legacy.infrastructure.useCase.person.AddServiceToPersonUseCase;
 import br.com.events.msauth.legacy.infrastructure.useCase.person.ChangePersonEmailUseCase;
-import br.com.events.msauth.legacy.infrastructure.useCase.person.ChangePersonPasswordUseCase;
 import br.com.events.msauth.legacy.infrastructure.useCase.person.CheckIfPersonIsServiceOwnerUseCase;
-import br.com.events.msauth.clean.process.person.create._use_case.interfaces.CreatePersonUseCase;
-import br.com.events.msauth.legacy.infrastructure.useCase.person.GeneratePersonTokenUseCase;
 import br.com.events.msauth.legacy.infrastructure.useCase.person.GetAuthenticatedPersonInformationUseCase;
 import br.com.events.msauth.legacy.infrastructure.useCase.person.UpdatePersonUseCase;
 import lombok.RequiredArgsConstructor;
@@ -51,7 +50,9 @@ public class PersonController implements PersonControllerDoc {
 
     private final CreatePersonUseCase createPersonUseCase;
     private final GeneratePersonTokenUseCase generatePersonTokenUseCase;
+
     private final ChangePersonPasswordUseCase changePersonPasswordUseCase;
+
     private final UpdatePersonUseCase updatePersonUseCase;
     private final ChangePersonEmailUseCase changePersonEmailUseCase;
     private final GetAuthenticatedPersonInformationUseCase getAuthenticatedPersonInformationUseCase;
@@ -67,7 +68,6 @@ public class PersonController implements PersonControllerDoc {
     @Override
     @PostMapping
     public ResponseEntity<URI> create(@RequestBody @Valid CreatePersonForm form) {
-
         var result = createPersonUseCase.execute(form);
         var uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{uuid}").buildAndExpand(result).toUri();
         return ResponseEntity.created(uri).build();
@@ -88,10 +88,7 @@ public class PersonController implements PersonControllerDoc {
     public ResponseEntity<Void> changePassword(
         @PathVariable("uuid") String emailValidationUuid, @RequestBody @Valid ChangePasswordForm changePasswordForm
     ) {
-        var useCaseForm = ChangePersonPasswordUseCaseMapper.convertToUseCaseForm(changePasswordForm);
-        useCaseForm.setEmailValidationUuid(emailValidationUuid);
-
-        changePersonPasswordUseCase.execute(useCaseForm);
+        changePersonPasswordUseCase.execute(emailValidationUuid, changePasswordForm);
         return ResponseEntity.noContent().build();
     }
 

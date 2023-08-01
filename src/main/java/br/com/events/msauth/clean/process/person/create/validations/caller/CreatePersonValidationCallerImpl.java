@@ -1,6 +1,6 @@
 package br.com.events.msauth.clean.process.person.create.validations.caller;
 
-import br.com.events.msauth.clean.infrastructure.controller.entity.person.create.CreatePersonForm;
+import br.com.events.msauth.clean.infrastructure.controller.entity.person.create.in.CreatePersonForm;
 import br.com.events.msauth.clean.process.person.create.validations.CreatePersonValidation;
 import br.com.events.msauth.clean.process.person.create.validations.CreatePersonValidationCaller;
 import lombok.RequiredArgsConstructor;

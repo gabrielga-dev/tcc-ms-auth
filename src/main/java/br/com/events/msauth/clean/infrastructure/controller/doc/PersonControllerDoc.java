@@ -1,11 +1,11 @@
 package br.com.events.msauth.clean.infrastructure.controller.doc;
 
 import br.com.events.msauth.clean.domain.entity.type.ServiceType;
+import br.com.events.msauth.clean.infrastructure.controller.entity.person.change_password.in.ChangePasswordForm;
+import br.com.events.msauth.clean.infrastructure.controller.entity.person.create.in.CreatePersonForm;
+import br.com.events.msauth.clean.infrastructure.controller.entity.person.generate_token.in.GeneratePersonTokenForm;
+import br.com.events.msauth.clean.infrastructure.controller.entity.person.generate_token.out.GeneratePersonTokenResult;
 import br.com.events.msauth.legacy.domain.form.person.changeEmail.in.ChangePersonEmailForm;
-import br.com.events.msauth.legacy.domain.form.person.changePassword.in.ChangePasswordForm;
-import br.com.events.msauth.clean.infrastructure.controller.entity.person.create.CreatePersonForm;
-import br.com.events.msauth.legacy.domain.form.person.generateToken.in.GeneratePersonTokenForm;
-import br.com.events.msauth.legacy.domain.form.person.generateToken.out.GeneratePersonTokenResult;
 import br.com.events.msauth.legacy.domain.form.person.getAuthenticatedPersonInformation.out.GetAuthenticatedPersonInformationResult;
 import br.com.events.msauth.legacy.domain.form.person.update.in.UpdatePersonForm;
 import br.com.events.msauth.legacy.domain.form.person.update.out.UpdatePersonResult;

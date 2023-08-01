@@ -1,6 +1,6 @@
 package br.com.events.msauth.legacy.infrastructure.useCase.person;
 
-import br.com.events.msauth.clean.infrastructure.controller.entity.person.create.CreatePersonForm;
+import br.com.events.msauth.clean.infrastructure.controller.entity.person.create.in.CreatePersonForm;
 import br.com.events.msauth.legacy.domain.form.person.findByUuid.out.FindPersonByUuidUseCaseResult;
 import br.com.events.msauth.legacy.infrastructure.UseCaseBase;
 

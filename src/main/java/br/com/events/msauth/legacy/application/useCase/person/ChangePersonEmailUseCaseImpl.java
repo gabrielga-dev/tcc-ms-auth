@@ -1,6 +1,6 @@
 package br.com.events.msauth.legacy.application.useCase.person;
 
-import br.com.events.msauth.legacy.application.useCase.exception.emailValidation.EmailValidationNotFoundException;
+import br.com.events.msauth.clean.domain.exception._process.email_validation.find_by_uuid.EmailValidationNotFoundException;
 import br.com.events.msauth.legacy.application.useCase.exception.person.NoPersonFoundByGivenEmailException;
 import br.com.events.msauth.clean.domain.entity.type.EmailValidationType;
 import br.com.events.msauth.legacy.domain.form.emailValidation.validateEmailValidation.in.ValidateEmailValidationUseCaseForm;
