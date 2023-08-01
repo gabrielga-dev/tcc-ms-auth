@@ -2,7 +2,7 @@ package br.com.events.msauth.legacy.application.useCase.emailValidation.personCr
 
 import br.com.events.msauth.clean.domain.exception._process.email_validation.find_by_uuid.EmailValidationNotFoundException;
 import br.com.events.msauth.clean.domain.entity.type.EmailValidationType;
-import br.com.events.msauth.legacy.domain.form.emailValidation.validateEmailValidation.in.ValidateEmailValidationUseCaseForm;
+import br.com.events.msauth.clean.domain.dto.email_validation.validate.in.ValidateEmailValidationDTO;
 import br.com.events.msauth.legacy.domain.repository.EmailValidationRepository;
 import br.com.events.msauth.legacy.infrastructure.useCase.emailConfirmation.ValidateEmailValidationUseCase;
 import br.com.events.msauth.legacy.infrastructure.useCase.emailConfirmation.personCreation.ValidatePersonCreationEmailValidationUseCase;
@@ -26,7 +26,7 @@ public class ValidatePersonCreationEmailValidationUseCaseImpl implements Validat
     @Override
     public Void execute(final String emailValidationUuid) {
 
-        var validationForm = ValidateEmailValidationUseCaseForm
+        var validationForm = ValidateEmailValidationDTO
             .builder()
             .emailValidationType(EmailValidationType.PERSON_CREATION)
             .emailValidationUuid(emailValidationUuid)

@@ -1,6 +1,6 @@
 package br.com.events.msauth.clean.process.person.change_password.validations.caller;
 
-import br.com.events.msauth.clean.domain.dto.person.change_passoword.ChangePasswordDTO;
+import br.com.events.msauth.clean.domain.dto.person.change_passoword.ValidateChangePasswordDTO;
 import br.com.events.msauth.clean.process.person.change_password.validations.ChangePasswordValidation;
 import br.com.events.msauth.clean.process.person.change_password.validations.ChangePasswordValidationCaller;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +15,7 @@ public class ChangePasswordValidationCallerImpl implements ChangePasswordValidat
     private final List<ChangePasswordValidation> validations;
 
     @Override
-    public Void callProcesses(ChangePasswordDTO toProcess) {
+    public Void callProcesses(ValidateChangePasswordDTO toProcess) {
         validations.forEach(
                 validation -> validation.validate(toProcess)
         );

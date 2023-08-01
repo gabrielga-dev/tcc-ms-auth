@@ -1,9 +1,8 @@
-package br.com.events.msauth.legacy.application.useCase.emailValidation;
+package br.com.events.msauth.clean.process.email_validation.validate._use_case;
 
 import br.com.events.msauth.clean.domain.exception._process.email_validation.find_by_uuid.EmailValidationNotFoundException;
 import br.com.events.msauth.clean.domain.dto.email_validation.validate.in.ValidateEmailValidationDTO;
 import br.com.events.msauth.legacy.domain.repository.EmailValidationRepository;
-import br.com.events.msauth.legacy.infrastructure.useCase.emailConfirmation.ValidateEmailValidationUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -16,19 +15,16 @@ public class ValidateEmailValidationUseCaseImpl implements ValidateEmailValidati
     private final EmailValidationRepository repository;
 
     @Override
-    public Void execute(final ValidateEmailValidationDTO form) {
-
+    public void execute(ValidateEmailValidationDTO form) {
         var validation = repository.findByUuidAndTypeAndValidatedIsFalse(
-            form.getEmailValidationUuid(), form.getEmailValidationType()
-            ).orElseThrow(
+                form.getEmailValidationUuid(), form.getEmailValidationType()
+        ).orElseThrow(
                 EmailValidationNotFoundException::new
-            );
+        );
 
         validation.setValidated(Boolean.TRUE);
         validation.setValidationDate(LocalDateTime.now());
 
         repository.save(validation);
-
-        return null;
     }
 }

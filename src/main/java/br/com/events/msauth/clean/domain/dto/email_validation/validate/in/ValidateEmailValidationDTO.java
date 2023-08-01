@@ -1,4 +1,4 @@
-package br.com.events.msauth.legacy.domain.form.emailValidation.validateEmailValidation.in;
+package br.com.events.msauth.clean.domain.dto.email_validation.validate.in;
 
 import br.com.events.msauth.clean.domain.entity.EmailValidation;
 import br.com.events.msauth.clean.domain.entity.type.EmailValidationType;
@@ -14,7 +14,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
-public class ValidateEmailValidationUseCaseForm {
+public class ValidateEmailValidationDTO {
 
     private String emailValidationUuid;
     private EmailValidationType emailValidationType;

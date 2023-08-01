@@ -3,7 +3,7 @@ package br.com.events.msauth.legacy.application.useCase.person;
 import br.com.events.msauth.clean.domain.exception._process.email_validation.find_by_uuid.EmailValidationNotFoundException;
 import br.com.events.msauth.legacy.application.useCase.exception.person.NoPersonFoundByGivenEmailException;
 import br.com.events.msauth.clean.domain.entity.type.EmailValidationType;
-import br.com.events.msauth.legacy.domain.form.emailValidation.validateEmailValidation.in.ValidateEmailValidationUseCaseForm;
+import br.com.events.msauth.clean.domain.dto.email_validation.validate.in.ValidateEmailValidationDTO;
 import br.com.events.msauth.legacy.domain.form.person.changeEmail.in.ChangeEmailRequestUseCaseForm;
 import br.com.events.msauth.legacy.domain.mapper.kafkaMessage.SendEmailChangedEmailValidationKafkaMessageUseCaseMapper;
 import br.com.events.msauth.legacy.domain.repository.EmailValidationRepository;
@@ -47,7 +47,7 @@ public class ChangePersonEmailUseCaseImpl implements ChangePersonEmailUseCase {
         person.setEmail(param.getNewEmail());
         personRepository.save(person);
 
-        var validationForm = ValidateEmailValidationUseCaseForm
+        var validationForm = ValidateEmailValidationDTO
             .builder()
             .emailValidationType(EmailValidationType.EMAIL_CHANGE)
             .emailValidationUuid(param.getEmailValidationUuid())

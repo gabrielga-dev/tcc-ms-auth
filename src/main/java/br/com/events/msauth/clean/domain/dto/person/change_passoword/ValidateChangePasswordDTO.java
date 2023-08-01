@@ -12,7 +12,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
-public class ChangePasswordDTO {
+public class ValidateChangePasswordDTO {
 
     private String emailValidationUuid;
     private String password;
