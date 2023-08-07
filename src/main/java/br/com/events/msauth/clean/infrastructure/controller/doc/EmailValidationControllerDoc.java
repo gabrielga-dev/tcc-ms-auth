@@ -1,7 +1,7 @@
 package br.com.events.msauth.clean.infrastructure.controller.doc;
 
-import br.com.events.msauth.legacy.domain.form.emailValidation.changeEmailRequest.CreateEmailChangeRequestForm;
-import br.com.events.msauth.legacy.domain.form.emailValidation.passwordChangeRequest.in.CreatePasswordChangeRequestForm;
+import br.com.events.msauth.clean.infrastructure.controller.entity.email_validation.change_email_request.in.CreateEmailChangeRequestForm;
+import br.com.events.msauth.clean.infrastructure.controller.entity.email_validation.change_password_request.in.CreatePasswordChangeRequestForm;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.http.ResponseEntity;

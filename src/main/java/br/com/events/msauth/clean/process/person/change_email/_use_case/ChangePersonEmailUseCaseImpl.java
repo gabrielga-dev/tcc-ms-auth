@@ -13,7 +13,7 @@ import br.com.events.msauth.clean.process.email_validation.validate._use_case.in
 import br.com.events.msauth.clean.process.kafka._use_case.interfaces.DispatchEmailValidationKafkaMessageUseCase;
 import br.com.events.msauth.clean.process.person.change_email._use_case.interfaces.ChangePersonEmailUseCase;
 import br.com.events.msauth.clean.process.person.change_email.validations.ChangeEmailValidationCaller;
-import br.com.events.msauth.legacy.domain.repository.PersonRepository;
+import br.com.events.msauth.clean.domain.repository.PersonRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

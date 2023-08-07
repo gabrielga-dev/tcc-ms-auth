@@ -4,7 +4,7 @@ import br.com.events.msauth.clean.domain.exception._process.email_validation.fin
 import br.com.events.msauth.clean.domain.entity.type.EmailValidationType;
 import br.com.events.msauth.clean.domain.dto.email_validation.validate.in.ValidateEmailValidationDTO;
 import br.com.events.msauth.clean.process.email_validation.validate._use_case.interfaces.ValidateEmailValidationUseCase;
-import br.com.events.msauth.legacy.domain.repository.EmailValidationRepository;
+import br.com.events.msauth.clean.domain.repository.EmailValidationRepository;
 import br.com.events.msauth.clean.process.email_validation.validate._use_case.interfaces.ValidatePersonCreationEmailValidationUseCase;
 import br.com.events.msauth.clean.process.person.set_person_as_active._use_case.interfaces.SetPersonAsActiveUseCase;
 import lombok.RequiredArgsConstructor;

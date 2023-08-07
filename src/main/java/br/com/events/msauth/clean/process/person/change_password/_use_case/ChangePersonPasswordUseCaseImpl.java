@@ -10,7 +10,7 @@ import br.com.events.msauth.clean.process.email_validation.find_by_uuid._use_cas
 import br.com.events.msauth.clean.process.email_validation.validate._use_case.interfaces.ValidateEmailValidationUseCase;
 import br.com.events.msauth.clean.process.person.change_password._use_case.interfaces.ChangePersonPasswordUseCase;
 import br.com.events.msauth.clean.process.person.change_password.validations.ChangePasswordValidationCaller;
-import br.com.events.msauth.legacy.domain.repository.PersonRepository;
+import br.com.events.msauth.clean.domain.repository.PersonRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;

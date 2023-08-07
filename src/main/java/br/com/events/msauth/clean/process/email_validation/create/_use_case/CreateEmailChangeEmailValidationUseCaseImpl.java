@@ -4,14 +4,12 @@ import br.com.events.msauth.clean.domain.dto.kafka.RawEmailRequest;
 import br.com.events.msauth.clean.domain.entity.EmailValidation;
 import br.com.events.msauth.clean.domain.entity.Person;
 import br.com.events.msauth.clean.domain.entity.type.EmailValidationType;
+import br.com.events.msauth.clean.domain.exception._process.person.NoPersonFoundByGivenEmailException;
 import br.com.events.msauth.clean.domain.type.EmailRequestType;
 import br.com.events.msauth.clean.process.email_validation.create._use_case.interfaces.CreateEmailChangeEmailValidationUseCase;
 import br.com.events.msauth.clean.process.email_validation.create._use_case.interfaces.CreateEmailValidationUseCase;
 import br.com.events.msauth.clean.process.kafka._use_case.interfaces.DispatchEmailValidationKafkaMessageUseCase;
-import br.com.events.msauth.legacy.application.useCase.exception.person.NoPersonFoundByGivenEmailException;
-import br.com.events.msauth.legacy.domain.repository.EmailValidationRepository;
-import br.com.events.msauth.legacy.domain.repository.PersonRepository;
-import br.com.events.msauth.legacy.infrastructure.useCase.kafkaMessage.SendEmailChangeRequestEmailValidationKafkaMessageUseCase;
+import br.com.events.msauth.clean.domain.repository.PersonRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -31,9 +29,6 @@ public class CreateEmailChangeEmailValidationUseCaseImpl implements CreateEmailC
     private final PersonRepository personRepository;
     private final CreateEmailValidationUseCase createEmailValidationUseCase;
     private final DispatchEmailValidationKafkaMessageUseCase dispatchEmailValidationKafkaMessageUseCase;
-
-    private final EmailValidationRepository emailValidationRepository;
-    private final SendEmailChangeRequestEmailValidationKafkaMessageUseCase sendEmailChangeRequestEmailValidationKafkaMessageUseCase;
 
     @Override
     public void execute(final String personUuid) {

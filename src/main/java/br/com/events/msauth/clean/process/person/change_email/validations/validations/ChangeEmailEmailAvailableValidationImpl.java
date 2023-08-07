@@ -5,7 +5,7 @@ import br.com.events.msauth.clean.domain.entity.Person;
 import br.com.events.msauth.clean.domain.entity.type.EmailValidationType;
 import br.com.events.msauth.clean.process.person.change_email.validations.ChangeEmailValidation;
 import br.com.events.msauth.clean.domain.exception._process.person.change_email.ChangePersonEmailEmailNotAvailableException;
-import br.com.events.msauth.legacy.domain.repository.PersonRepository;
+import br.com.events.msauth.clean.domain.repository.PersonRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

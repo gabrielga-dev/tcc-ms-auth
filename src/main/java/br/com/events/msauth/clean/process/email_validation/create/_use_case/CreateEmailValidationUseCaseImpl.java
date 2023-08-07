@@ -3,8 +3,8 @@ package br.com.events.msauth.clean.process.email_validation.create._use_case;
 import br.com.events.msauth.clean.domain.entity.EmailValidation;
 import br.com.events.msauth.clean.process.email_validation.create._use_case.interfaces.CreateEmailValidationUseCase;
 import br.com.events.msauth.clean.domain.exception._process.person.NoPersonFoundByGivenUuidException;
-import br.com.events.msauth.legacy.domain.repository.EmailValidationRepository;
-import br.com.events.msauth.legacy.domain.repository.PersonRepository;
+import br.com.events.msauth.clean.domain.repository.EmailValidationRepository;
+import br.com.events.msauth.clean.domain.repository.PersonRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

@@ -10,8 +10,8 @@ import br.com.events.msauth.clean.process.person.create.validations.CreatePerson
 import br.com.events.msauth.clean.process.email_validation.create._use_case.interfaces.CreateEmailValidationUseCase;
 import br.com.events.msauth.clean.process.kafka._use_case.interfaces.DispatchEmailValidationKafkaMessageUseCase;
 import br.com.events.msauth.clean.process.person.create._use_case.interfaces.CreatePersonUseCase;
-import br.com.events.msauth.legacy.domain.mapper.person.CreatePersonUseCaseMapper;
-import br.com.events.msauth.legacy.domain.repository.PersonRepository;
+import br.com.events.msauth.clean.process.person.create.mapper.CreatePersonUseCaseMapper;
+import br.com.events.msauth.clean.domain.repository.PersonRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;

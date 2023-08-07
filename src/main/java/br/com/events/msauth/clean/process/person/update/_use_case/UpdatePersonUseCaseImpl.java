@@ -6,8 +6,8 @@ import br.com.events.msauth.clean.infrastructure.controller.entity.person.update
 import br.com.events.msauth.clean.process.person.update._use_case.interfaces.UpdatePersonUseCase;
 import br.com.events.msauth.clean.process.authentication.service.AuthenticationService;
 import br.com.events.msauth.clean.domain.exception._process.person.NoPersonFoundByGivenUuidException;
-import br.com.events.msauth.legacy.application.useCase.exception.person.NotAbleToUpdateOtherPersonInformationException;
-import br.com.events.msauth.legacy.domain.repository.PersonRepository;
+import br.com.events.msauth.clean.domain.exception._process.person.update.NotAbleToUpdateOtherPersonInformationException;
+import br.com.events.msauth.clean.domain.repository.PersonRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

@@ -6,8 +6,8 @@ import br.com.events.msauth.clean.domain.entity.type.ServiceType;
 import br.com.events.msauth.clean.domain.exception._process.person.NoPersonFoundByGivenUuidException;
 import br.com.events.msauth.clean.process.authentication.service.AuthenticationService;
 import br.com.events.msauth.clean.process.person.add_service_to_person._use_case.interfaces.AddServiceToPersonUseCase;
-import br.com.events.msauth.legacy.domain.repository.PersonRepository;
-import br.com.events.msauth.legacy.domain.repository.ServiceRepository;
+import br.com.events.msauth.clean.domain.repository.PersonRepository;
+import br.com.events.msauth.clean.domain.repository.ServiceRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

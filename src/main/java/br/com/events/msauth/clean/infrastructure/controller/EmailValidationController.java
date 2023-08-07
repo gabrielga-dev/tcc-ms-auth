@@ -1,7 +1,7 @@
 package br.com.events.msauth.clean.infrastructure.controller;
 
-import br.com.events.msauth.legacy.domain.form.emailValidation.changeEmailRequest.CreateEmailChangeRequestForm;
-import br.com.events.msauth.legacy.domain.form.emailValidation.passwordChangeRequest.in.CreatePasswordChangeRequestForm;
+import br.com.events.msauth.clean.infrastructure.controller.entity.email_validation.change_email_request.in.CreateEmailChangeRequestForm;
+import br.com.events.msauth.clean.infrastructure.controller.entity.email_validation.change_password_request.in.CreatePasswordChangeRequestForm;
 import br.com.events.msauth.clean.infrastructure.controller.doc.EmailValidationControllerDoc;
 import br.com.events.msauth.clean.process.email_validation.email_validation_exists_and_not_validated._use_case.interfaces.CheckIfEmailValidationExistsAndIsNotValidatedUseCase;
 import br.com.events.msauth.clean.process.email_validation.create._use_case.interfaces.CreateEmailChangeEmailValidationUseCase;

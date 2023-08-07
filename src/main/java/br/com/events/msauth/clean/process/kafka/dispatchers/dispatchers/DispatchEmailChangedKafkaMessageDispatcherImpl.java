@@ -5,7 +5,7 @@ import br.com.events.msauth.clean.domain.dto.kafka.email_request.EmailChangedEma
 import br.com.events.msauth.clean.domain.type.EmailRequestType;
 import br.com.events.msauth.clean.domain.type.EmailTemplateIdType;
 import br.com.events.msauth.clean.process.kafka.dispatchers.KafkaMessageDispatcher;
-import br.com.events.msauth.legacy.application.dispatcher.KafkaDispatcher;
+import br.com.events.msauth.clean.infrastructure.bean.KafkaDispatcher;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;

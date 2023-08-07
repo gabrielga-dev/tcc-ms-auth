@@ -4,8 +4,8 @@ import br.com.events.msauth.clean.domain.entity.pk.ServicePk;
 import br.com.events.msauth.clean.domain.entity.type.ServiceType;
 import br.com.events.msauth.clean.process.authentication.service.AuthenticationService;
 import br.com.events.msauth.clean.process.person.check_if_person_is_owner._use_case.interfaces.CheckIfPersonIsServiceOwnerUseCase;
-import br.com.events.msauth.legacy.application.useCase.exception.person.PersonIsIsNotTheServiceOwnerException;
-import br.com.events.msauth.legacy.domain.repository.ServiceRepository;
+import br.com.events.msauth.clean.domain.exception._process.person.check_if_person_is_owner.PersonIsIsNotTheServiceOwnerException;
+import br.com.events.msauth.clean.domain.repository.ServiceRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
