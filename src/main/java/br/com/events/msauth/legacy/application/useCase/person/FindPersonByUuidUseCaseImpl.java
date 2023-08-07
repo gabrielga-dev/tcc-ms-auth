@@ -1,6 +1,6 @@
 package br.com.events.msauth.legacy.application.useCase.person;
 
-import br.com.events.msauth.legacy.application.useCase.exception.person.NoPersonFoundByGivenUuidException;
+import br.com.events.msauth.clean.domain.exception._process.person.NoPersonFoundByGivenUuidException;
 import br.com.events.msauth.legacy.domain.form.person.findByUuid.out.FindPersonByUuidUseCaseResult;
 import br.com.events.msauth.legacy.domain.mapper.person.FindPersonByUuidUseCaseMapper;
 import br.com.events.msauth.legacy.domain.repository.PersonRepository;

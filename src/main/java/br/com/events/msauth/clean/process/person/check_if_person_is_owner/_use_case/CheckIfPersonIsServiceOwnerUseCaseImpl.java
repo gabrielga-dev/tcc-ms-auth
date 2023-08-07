@@ -1,12 +1,15 @@
-package br.com.events.msauth.legacy.application.useCase.person;
+package br.com.events.msauth.clean.process.person.check_if_person_is_owner._use_case;
 
-import br.com.events.msauth.clean.process.authentication.service.AuthenticationService;
-import br.com.events.msauth.legacy.application.useCase.exception.person.PersonIsIsNotTheServiceOwnerException;
 import br.com.events.msauth.clean.domain.entity.pk.ServicePk;
+import br.com.events.msauth.clean.domain.entity.type.ServiceType;
+import br.com.events.msauth.clean.process.authentication.service.AuthenticationService;
+import br.com.events.msauth.clean.process.person.check_if_person_is_owner._use_case.interfaces.CheckIfPersonIsServiceOwnerUseCase;
+import br.com.events.msauth.legacy.application.useCase.exception.person.PersonIsIsNotTheServiceOwnerException;
 import br.com.events.msauth.legacy.domain.repository.ServiceRepository;
-import br.com.events.msauth.legacy.infrastructure.useCase.person.CheckIfPersonIsServiceOwnerUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+
+import java.util.Objects;
 
 /**
  * This class implements {@link CheckIfPersonIsServiceOwnerUseCase} interface and checks if the authenticated person is
@@ -22,19 +25,21 @@ public class CheckIfPersonIsServiceOwnerUseCaseImpl implements CheckIfPersonIsSe
     private final ServiceRepository serviceRepository;
 
     @Override
-    public Void execute(final String param) {
+    public void execute(ServiceType serviceType, final String serviceUuid) {
 
         var personUuid = authenticationService.getAuthenticatedPerson().getUuid();
 
         var pk = ServicePk
-            .builder()
-            .serviceUuid(param)
-            .personUuid(personUuid)
-            .build();
+                .builder()
+                .serviceUuid(serviceUuid)
+                .personUuid(personUuid)
+                .build();
 
-        serviceRepository.findById(pk)
-            .orElseThrow(PersonIsIsNotTheServiceOwnerException::new);
+        var service = serviceRepository.findById(pk)
+                .orElseThrow(PersonIsIsNotTheServiceOwnerException::new);
 
-        return null;
+        if (Objects.equals(service.getType(), serviceType)) {
+            throw new PersonIsIsNotTheServiceOwnerException();
+        }
     }
 }

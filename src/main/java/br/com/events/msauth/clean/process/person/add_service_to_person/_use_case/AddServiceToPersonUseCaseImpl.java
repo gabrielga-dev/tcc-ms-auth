@@ -1,13 +1,13 @@
-package br.com.events.msauth.legacy.application.useCase.person;
+package br.com.events.msauth.clean.process.person.add_service_to_person._use_case;
 
-import br.com.events.msauth.clean.process.authentication.service.AuthenticationService;
-import br.com.events.msauth.legacy.application.useCase.exception.person.NoPersonFoundByGivenUuidException;
 import br.com.events.msauth.clean.domain.entity.Service;
 import br.com.events.msauth.clean.domain.entity.pk.ServicePk;
-import br.com.events.msauth.legacy.domain.form.person.addServiceToPerson.in.AddServiceToPersonUseCaseForm;
+import br.com.events.msauth.clean.domain.entity.type.ServiceType;
+import br.com.events.msauth.clean.domain.exception._process.person.NoPersonFoundByGivenUuidException;
+import br.com.events.msauth.clean.process.authentication.service.AuthenticationService;
+import br.com.events.msauth.clean.process.person.add_service_to_person._use_case.interfaces.AddServiceToPersonUseCase;
 import br.com.events.msauth.legacy.domain.repository.PersonRepository;
 import br.com.events.msauth.legacy.domain.repository.ServiceRepository;
-import br.com.events.msauth.legacy.infrastructure.useCase.person.AddServiceToPersonUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -26,23 +26,21 @@ public class AddServiceToPersonUseCaseImpl implements AddServiceToPersonUseCase 
     private final PersonRepository personRepository;
 
     @Override
-    public Void execute(final AddServiceToPersonUseCaseForm param) {
+    public void execute(ServiceType serviceType, String serviceUuid) {
         var authenticatedPersonUuid = authenticationService.getAuthenticatedPerson().getUuid();
 
         var pk = new ServicePk();
         pk.setPersonUuid(authenticatedPersonUuid);
-        pk.setServiceUuid(param.getServiceUuid());
+        pk.setServiceUuid(serviceUuid);
 
         var toSave = new Service();
         toSave.setPk(pk);
-        toSave.setType(param.getServiceType());
+        toSave.setType(serviceType);
         toSave.setPerson(
             personRepository.findById(authenticatedPersonUuid)
                 .orElseThrow(NoPersonFoundByGivenUuidException::new)
         );
 
         serviceRepository.save(toSave);
-
-        return null;
     }
 }

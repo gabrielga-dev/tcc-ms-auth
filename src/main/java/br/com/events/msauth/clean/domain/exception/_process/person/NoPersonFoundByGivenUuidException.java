@@ -1,4 +1,4 @@
-package br.com.events.msauth.legacy.application.useCase.exception.person;
+package br.com.events.msauth.clean.domain.exception._process.person;
 
 import br.com.events.msauth.clean.domain.exception.badRequest.BadRequestException;
 

@@ -49,5 +49,5 @@ public interface PersonControllerDoc {
 
 
     @ApiOperation(value = "Check if the authenticated person is the owner of the given service")
-    ResponseEntity<Void> checkIfPersonIsServiceOwner(String serviceUuid);
+    ResponseEntity<Void> checkIfPersonIsServiceOwner(ServiceType serviceType, String serviceUuid);
 }
