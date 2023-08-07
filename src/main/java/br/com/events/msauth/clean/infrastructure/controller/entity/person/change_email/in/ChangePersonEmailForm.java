@@ -1,4 +1,4 @@
-package br.com.events.msauth.legacy.domain.form.person.changeEmail.in;
+package br.com.events.msauth.clean.infrastructure.controller.entity.person.change_email.in;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

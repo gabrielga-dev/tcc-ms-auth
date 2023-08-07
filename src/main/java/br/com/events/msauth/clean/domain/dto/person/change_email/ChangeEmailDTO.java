@@ -1,4 +1,4 @@
-package br.com.events.msauth.legacy.domain.form.person.changeEmail.in;
+package br.com.events.msauth.clean.domain.dto.person.change_email;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -12,8 +12,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
-public class ChangeEmailRequestUseCaseForm {
+public class ChangeEmailDTO {
 
-    private String newEmail;
     private String emailValidationUuid;
+    private String newEmail;
 }

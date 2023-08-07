@@ -1,5 +1,6 @@
-package br.com.events.msauth.clean.domain.dto.kafka;
+package br.com.events.msauth.clean.domain.dto.kafka.email_request;
 
+import br.com.events.msauth.clean.domain.dto.kafka.BaseEmailRequest;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;

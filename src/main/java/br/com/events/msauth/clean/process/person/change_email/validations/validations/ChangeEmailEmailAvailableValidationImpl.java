@@ -1,11 +1,11 @@
-package br.com.events.msauth.legacy.application.validation.person.changeEmail;
+package br.com.events.msauth.clean.process.person.change_email.validations.validations;
 
-import br.com.events.msauth.legacy.application.validation.person.changeEmail.exception.ChangePersonEmailEmailNotAvailableException;
+import br.com.events.msauth.clean.domain.dto.person.change_email.ChangeEmailDTO;
 import br.com.events.msauth.clean.domain.entity.Person;
 import br.com.events.msauth.clean.domain.entity.type.EmailValidationType;
-import br.com.events.msauth.legacy.domain.form.person.changeEmail.in.ChangeEmailRequestUseCaseForm;
+import br.com.events.msauth.clean.process.person.change_email.validations.ChangeEmailValidation;
+import br.com.events.msauth.clean.domain.exception._process.person.change_email.ChangePersonEmailEmailNotAvailableException;
 import br.com.events.msauth.legacy.domain.repository.PersonRepository;
-import br.com.events.msauth.legacy.infrastructure.validation.person.changeEmail.ChangePersonEmailValidation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -18,12 +18,12 @@ import java.util.Objects;
  */
 @Component
 @RequiredArgsConstructor
-public class ChangePersonEmailEmailAvailableValidation implements ChangePersonEmailValidation {
+public class ChangeEmailEmailAvailableValidationImpl implements ChangeEmailValidation {
 
     private final PersonRepository personRepository;
 
     @Override
-    public void validate(final ChangeEmailRequestUseCaseForm toValidate) {
+    public Void process(final ChangeEmailDTO toValidate) {
         var personOpt = personRepository.findByEmailAndActiveTrue(
             toValidate.getNewEmail()
         );
@@ -31,6 +31,7 @@ public class ChangePersonEmailEmailAvailableValidation implements ChangePersonEm
         if (personOpt.isPresent() && isNotWaitingForEmailValidation(personOpt.get())){
             throw new ChangePersonEmailEmailNotAvailableException();
         }
+        return null;
     }
 
     private boolean isNotWaitingForEmailValidation(final Person person) {

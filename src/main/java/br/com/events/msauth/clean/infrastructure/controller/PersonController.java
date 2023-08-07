@@ -6,21 +6,20 @@ import br.com.events.msauth.clean.infrastructure.controller.entity.person.change
 import br.com.events.msauth.clean.infrastructure.controller.entity.person.create.in.CreatePersonForm;
 import br.com.events.msauth.clean.infrastructure.controller.entity.person.generate_token.in.GeneratePersonTokenForm;
 import br.com.events.msauth.clean.infrastructure.controller.entity.person.generate_token.out.GeneratePersonTokenResult;
+import br.com.events.msauth.clean.infrastructure.controller.entity.person.update.in.UpdatePersonForm;
+import br.com.events.msauth.clean.infrastructure.controller.entity.person.update.out.UpdatePersonResult;
+import br.com.events.msauth.clean.process.person.change_email._use_case.interfaces.ChangePersonEmailUseCase;
 import br.com.events.msauth.clean.process.person.change_password._use_case.interfaces.ChangePersonPasswordUseCase;
 import br.com.events.msauth.clean.process.person.create._use_case.interfaces.CreatePersonUseCase;
 import br.com.events.msauth.clean.process.person.generate_token._use_case.interfaces.GeneratePersonTokenUseCase;
-import br.com.events.msauth.legacy.domain.form.person.changeEmail.in.ChangePersonEmailForm;
+import br.com.events.msauth.clean.process.person.update._use_case.interfaces.UpdatePersonUseCase;
+import br.com.events.msauth.clean.infrastructure.controller.entity.person.change_email.in.ChangePersonEmailForm;
 import br.com.events.msauth.legacy.domain.form.person.getAuthenticatedPersonInformation.out.GetAuthenticatedPersonInformationResult;
-import br.com.events.msauth.clean.infrastructure.controller.entity.person.update.in.UpdatePersonForm;
-import br.com.events.msauth.clean.infrastructure.controller.entity.person.update.out.UpdatePersonResult;
 import br.com.events.msauth.legacy.domain.mapper.person.AddServiceToPersonUseCaseMapper;
-import br.com.events.msauth.legacy.domain.mapper.person.ChangePersonEmailUseCaseMapper;
 import br.com.events.msauth.legacy.domain.mapper.person.GetAuthenticatedPersonInformationUseCaseMapper;
 import br.com.events.msauth.legacy.infrastructure.useCase.person.AddServiceToPersonUseCase;
-import br.com.events.msauth.legacy.infrastructure.useCase.person.ChangePersonEmailUseCase;
 import br.com.events.msauth.legacy.infrastructure.useCase.person.CheckIfPersonIsServiceOwnerUseCase;
 import br.com.events.msauth.legacy.infrastructure.useCase.person.GetAuthenticatedPersonInformationUseCase;
-import br.com.events.msauth.clean.process.person.update._use_case.interfaces.UpdatePersonUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -50,7 +49,6 @@ public class PersonController implements PersonControllerDoc {
     private final CreatePersonUseCase createPersonUseCase;
     private final GeneratePersonTokenUseCase generatePersonTokenUseCase;
     private final ChangePersonPasswordUseCase changePersonPasswordUseCase;
-
     private final UpdatePersonUseCase updatePersonUseCase;
 
     private final ChangePersonEmailUseCase changePersonEmailUseCase;
@@ -107,11 +105,7 @@ public class PersonController implements PersonControllerDoc {
         @PathVariable("uuid") String emailValidationUuid,
         @RequestBody @Valid ChangePersonEmailForm changePersonEmailForm
     ) {
-        var useCaseForm = ChangePersonEmailUseCaseMapper.convertToUseCaseForm(changePersonEmailForm);
-        useCaseForm.setEmailValidationUuid(emailValidationUuid);
-
-        changePersonEmailUseCase.execute(useCaseForm);
-
+        changePersonEmailUseCase.execute(emailValidationUuid, changePersonEmailForm);
         return ResponseEntity.noContent().build();
     }
 

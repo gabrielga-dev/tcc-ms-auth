@@ -3,7 +3,7 @@ package br.com.events.msauth.legacy.domain.mapper.kafkaMessage;
 import br.com.events.msauth.clean.domain.entity.Person;
 import br.com.events.msauth.legacy.domain.form.kafkaMessage.sendEmailChangeRequestEmailValidationKafkaMessage.in.SendEmailChangeRequestEmailValidationKafkaMessageUseCaseForm;
 import br.com.events.msauth.clean.domain.type.EmailTemplateIdType;
-import br.com.events.msauth.clean.domain.dto.kafka.EmailChangeRequestEmailValidationEmailRequestKafkaMessage;
+import br.com.events.msauth.clean.domain.dto.kafka.email_request.EmailChangeRequestEmailValidationEmailRequestKafkaMessage;
 import br.com.events.msauth.legacy.infrastructure.useCase.kafkaMessage.SendEmailChangeRequestEmailValidationKafkaMessageUseCase;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;

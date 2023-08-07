@@ -1,4 +1,4 @@
-package br.com.events.msauth.legacy.application.validation.person.changeEmail.exception;
+package br.com.events.msauth.clean.domain.exception._process.person.change_email;
 
 import br.com.events.msauth.clean.domain.exception.badRequest.BadRequestException;
 

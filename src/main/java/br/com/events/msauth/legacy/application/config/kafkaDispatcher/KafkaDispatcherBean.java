@@ -1,10 +1,10 @@
 package br.com.events.msauth.legacy.application.config.kafkaDispatcher;
 
+import br.com.events.msauth.clean.domain.dto.kafka.email_request.EmailChangeRequestEmailValidationEmailRequestKafkaMessage;
+import br.com.events.msauth.clean.domain.dto.kafka.email_request.EmailChangedEmailRequestKafkaMessage;
+import br.com.events.msauth.clean.domain.dto.kafka.email_request.PasswordChangeEmailValidationEmailRequestKafkaMessage;
+import br.com.events.msauth.clean.domain.dto.kafka.email_request.PersonCreationEmailRequest;
 import br.com.events.msauth.legacy.application.dispatcher.KafkaDispatcher;
-import br.com.events.msauth.clean.domain.dto.kafka.EmailChangeRequestEmailValidationEmailRequestKafkaMessage;
-import br.com.events.msauth.clean.domain.dto.kafka.EmailChangedEmailRequestKafkaMessage;
-import br.com.events.msauth.clean.domain.dto.kafka.PasswordChangeEmailValidationEmailRequestKafkaMessage;
-import br.com.events.msauth.clean.domain.dto.kafka.PersonCreationEmailRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

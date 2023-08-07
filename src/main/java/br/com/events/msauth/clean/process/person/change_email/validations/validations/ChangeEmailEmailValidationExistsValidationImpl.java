@@ -1,21 +1,27 @@
-package br.com.events.msauth.clean.process.person.change_password.validations.validations;
+package br.com.events.msauth.clean.process.person.change_email.validations.validations;
 
-import br.com.events.msauth.clean.domain.dto.person.change_passoword.ValidateChangePasswordDTO;
+import br.com.events.msauth.clean.domain.dto.person.change_email.ChangeEmailDTO;
 import br.com.events.msauth.clean.domain.exception._process.email_validation.find_by_uuid.EmailValidationNotFoundException;
 import br.com.events.msauth.clean.process.email_validation.find_by_uuid._use_case.interfaces.FindEmailValidationByUuidUseCase;
-import br.com.events.msauth.clean.process.person.change_password.validations.ChangePasswordValidation;
+import br.com.events.msauth.clean.process.person.change_email.validations.ChangeEmailValidation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+/**
+ * This class checks if the incoming new email is available
+ *
+ * @author Gabriel Guimarães de Almeida
+ */
 @Component
 @RequiredArgsConstructor
-public class ChangePasswordEmailValidationExistsValidationImpl implements ChangePasswordValidation {
+public class ChangeEmailEmailValidationExistsValidationImpl implements ChangeEmailValidation {
 
     private final FindEmailValidationByUuidUseCase findEmailValidationByUuidUseCase;
 
     @Override
-    public Void process(ValidateChangePasswordDTO toProcess) {
-        var emailValidation = findEmailValidationByUuidUseCase.execute(toProcess.getEmailValidationUuid());
+    public Void process(final ChangeEmailDTO toValidate) {
+        var emailValidation = findEmailValidationByUuidUseCase.execute(toValidate.getEmailValidationUuid());
+
         if (emailValidation.getValidated() || !emailValidation.getPerson().isActive()){
             throw new EmailValidationNotFoundException();
         }
