@@ -1,0 +1,18 @@
+package br.com.events.msauth.domain.exception._process.person.update;
+
+import br.com.events.msauth.domain.exception.badRequest.ForbiddenRequestException;
+
+/**
+ * This is thrown when a person tries to update other's person information
+ *
+ * @author Gabriel Guimarães de Almeida
+ */
+public class NotAbleToUpdateOtherPersonInformationException extends ForbiddenRequestException {
+
+    public NotAbleToUpdateOtherPersonInformationException() {
+        super(
+            "Impossível realizar a ação!",
+            "Você não pode alterar as informações de outro usuário, apenas as suas!"
+        );
+    }
+}
