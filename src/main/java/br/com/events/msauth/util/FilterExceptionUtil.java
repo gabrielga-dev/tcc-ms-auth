@@ -1,6 +1,6 @@
 package br.com.events.msauth.util;
 
-import br.com.events.msauth.infrastructure.exception.BusinessException;
+import br.com.events.msauth.domain.exception.BusinessException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
