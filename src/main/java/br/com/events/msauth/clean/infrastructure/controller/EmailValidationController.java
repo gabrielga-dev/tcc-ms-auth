@@ -1,12 +1,12 @@
-package br.com.events.msauth.legacy.application.controller;
+package br.com.events.msauth.clean.infrastructure.controller;
 
 import br.com.events.msauth.legacy.domain.form.emailValidation.changeEmailRequest.CreateEmailChangeRequestForm;
 import br.com.events.msauth.legacy.domain.form.emailValidation.passwordChangeRequest.in.CreatePasswordChangeRequestForm;
-import br.com.events.msauth.legacy.infrastructure.controller.EmailValidationControllerDoc;
-import br.com.events.msauth.legacy.infrastructure.useCase.emailConfirmation.CheckIfEmailValidationExistsAndIsNotValidatedUseCase;
-import br.com.events.msauth.legacy.infrastructure.useCase.emailConfirmation.emailChange.CreateEmailChangeEmailValidationUseCase;
-import br.com.events.msauth.legacy.infrastructure.useCase.emailConfirmation.passwordChange.CreatePasswordChangeEmailValidationUseCase;
-import br.com.events.msauth.legacy.infrastructure.useCase.emailConfirmation.personCreation.ValidatePersonCreationEmailValidationUseCase;
+import br.com.events.msauth.clean.infrastructure.controller.doc.EmailValidationControllerDoc;
+import br.com.events.msauth.clean.process.email_validation.email_validation_exists_and_not_validated._use_case.interfaces.CheckIfEmailValidationExistsAndIsNotValidatedUseCase;
+import br.com.events.msauth.clean.process.email_validation.create._use_case.interfaces.CreateEmailChangeEmailValidationUseCase;
+import br.com.events.msauth.clean.process.email_validation.create._use_case.interfaces.CreatePasswordChangeEmailValidationUseCase;
+import br.com.events.msauth.clean.process.email_validation.validate._use_case.interfaces.ValidatePersonCreationEmailValidationUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,8 +29,8 @@ import javax.validation.Valid;
 @RequestMapping(value = "/v1/email-validation")
 public class EmailValidationController implements EmailValidationControllerDoc {
 
-    private final CheckIfEmailValidationExistsAndIsNotValidatedUseCase checkIfEmailValidationExistsAndIsNotValidatedUseCase;
     private final ValidatePersonCreationEmailValidationUseCase validatePersonCreationEmailValidationUseCase;
+    private final CheckIfEmailValidationExistsAndIsNotValidatedUseCase checkIfEmailValidationExistsAndIsNotValidatedUseCase;
     private final CreatePasswordChangeEmailValidationUseCase createPasswordChangeEmailValidationUseCase;
     private final CreateEmailChangeEmailValidationUseCase createEmailChangeEmailValidationUseCase;
 
@@ -66,9 +66,7 @@ public class EmailValidationController implements EmailValidationControllerDoc {
     public ResponseEntity<Void> createEmailChangeRequest(
         @RequestBody @Valid CreateEmailChangeRequestForm createEmailChangeRequestForm
     ) {
-
         createEmailChangeEmailValidationUseCase.execute(createEmailChangeRequestForm.getUuid());
-
         return ResponseEntity.noContent().build();
     }
 }

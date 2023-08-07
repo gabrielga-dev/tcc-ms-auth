@@ -16,7 +16,7 @@ import java.util.Objects;
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public class DispatchEmailChangeKafkaMessageDispatcherImpl implements KafkaMessageDispatcher {
+public class DispatchPasswordChangeKafkaMessageDispatcherImpl implements KafkaMessageDispatcher {
 
     @Value("${kafka.topic.email}")
     private String emailKafkaTopic;
@@ -25,14 +25,14 @@ public class DispatchEmailChangeKafkaMessageDispatcherImpl implements KafkaMessa
 
     @Override
     public boolean isAccepted(RawEmailRequest toCheck) {
-        return Objects.equals(EmailRequestType.EMAIL_CHANGE_EMAIL_VALIDATION, toCheck.getType());
+        return Objects.equals(EmailRequestType.PASSWORD_CHANGE_EMAIL_VALIDATION, toCheck.getType());
     }
 
     @Override
     public Void process(RawEmailRequest toProcess) {
         var message = PasswordChangeEmailValidationEmailRequestKafkaMessage
                 .builder()
-                .templateId(EmailTemplateIdType.EMAIL_CHANGE_EMAIL_VALIDATION.getId())
+                .templateId(EmailTemplateIdType.PASSWORD_CHANGE_EMAIL_VALIDATION.getId())
                 .to(toProcess.getKeyAndValues().get("email"))
                 .personFirstName(toProcess.getKeyAndValues().get("personFirstName"))
                 .personLastName(toProcess.getKeyAndValues().get("personLastName"))

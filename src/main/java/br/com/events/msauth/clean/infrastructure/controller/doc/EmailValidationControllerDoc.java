@@ -1,4 +1,4 @@
-package br.com.events.msauth.legacy.infrastructure.controller;
+package br.com.events.msauth.clean.infrastructure.controller.doc;
 
 import br.com.events.msauth.legacy.domain.form.emailValidation.changeEmailRequest.CreateEmailChangeRequestForm;
 import br.com.events.msauth.legacy.domain.form.emailValidation.passwordChangeRequest.in.CreatePasswordChangeRequestForm;

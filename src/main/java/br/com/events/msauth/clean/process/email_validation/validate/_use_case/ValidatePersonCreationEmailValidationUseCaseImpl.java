@@ -1,12 +1,12 @@
-package br.com.events.msauth.legacy.application.useCase.emailValidation.personCreation;
+package br.com.events.msauth.clean.process.email_validation.validate._use_case;
 
 import br.com.events.msauth.clean.domain.exception._process.email_validation.find_by_uuid.EmailValidationNotFoundException;
 import br.com.events.msauth.clean.domain.entity.type.EmailValidationType;
 import br.com.events.msauth.clean.domain.dto.email_validation.validate.in.ValidateEmailValidationDTO;
+import br.com.events.msauth.clean.process.email_validation.validate._use_case.interfaces.ValidateEmailValidationUseCase;
 import br.com.events.msauth.legacy.domain.repository.EmailValidationRepository;
-import br.com.events.msauth.legacy.infrastructure.useCase.emailConfirmation.ValidateEmailValidationUseCase;
-import br.com.events.msauth.legacy.infrastructure.useCase.emailConfirmation.personCreation.ValidatePersonCreationEmailValidationUseCase;
-import br.com.events.msauth.legacy.infrastructure.useCase.person.SetValidStatusOnPersonByEmailValidationsUseCase;
+import br.com.events.msauth.clean.process.email_validation.validate._use_case.interfaces.ValidatePersonCreationEmailValidationUseCase;
+import br.com.events.msauth.clean.process.person.set_person_as_active._use_case.interfaces.SetPersonAsActiveUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -19,12 +19,12 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class ValidatePersonCreationEmailValidationUseCaseImpl implements ValidatePersonCreationEmailValidationUseCase {
 
-    private final EmailValidationRepository repository;
-    private final SetValidStatusOnPersonByEmailValidationsUseCase setValidStatusOnPersonByEmailValidationsUseCase;
     private final ValidateEmailValidationUseCase validateEmailValidationUseCase;
+    private final EmailValidationRepository repository;
+    private final SetPersonAsActiveUseCase setPersonAsActiveUseCase;
 
     @Override
-    public Void execute(final String emailValidationUuid) {
+    public void execute(final String emailValidationUuid) {
 
         var validationForm = ValidateEmailValidationDTO
             .builder()
@@ -39,8 +39,6 @@ public class ValidatePersonCreationEmailValidationUseCaseImpl implements Validat
                 EmailValidationNotFoundException::new
             );
 
-        setValidStatusOnPersonByEmailValidationsUseCase.execute(validation.getPerson().getUuid());
-
-        return null;
+        setPersonAsActiveUseCase.execute(validation.getPerson().getUuid());
     }
 }

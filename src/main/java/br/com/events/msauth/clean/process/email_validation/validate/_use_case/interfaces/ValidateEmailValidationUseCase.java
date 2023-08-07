@@ -1,4 +1,4 @@
-package br.com.events.msauth.clean.process.email_validation.validate._use_case;
+package br.com.events.msauth.clean.process.email_validation.validate._use_case.interfaces;
 
 import br.com.events.msauth.clean.domain.dto.email_validation.validate.in.ValidateEmailValidationDTO;
 

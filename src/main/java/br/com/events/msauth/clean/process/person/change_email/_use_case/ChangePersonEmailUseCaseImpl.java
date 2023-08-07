@@ -9,7 +9,7 @@ import br.com.events.msauth.clean.domain.entity.type.EmailValidationType;
 import br.com.events.msauth.clean.domain.type.EmailRequestType;
 import br.com.events.msauth.clean.infrastructure.controller.entity.person.change_email.in.ChangePersonEmailForm;
 import br.com.events.msauth.clean.process.email_validation.find_by_uuid._use_case.interfaces.FindEmailValidationByUuidUseCase;
-import br.com.events.msauth.clean.process.email_validation.validate._use_case.ValidateEmailValidationUseCase;
+import br.com.events.msauth.clean.process.email_validation.validate._use_case.interfaces.ValidateEmailValidationUseCase;
 import br.com.events.msauth.clean.process.kafka._use_case.interfaces.DispatchEmailValidationKafkaMessageUseCase;
 import br.com.events.msauth.clean.process.person.change_email._use_case.interfaces.ChangePersonEmailUseCase;
 import br.com.events.msauth.clean.process.person.change_email.validations.ChangeEmailValidationCaller;
@@ -85,7 +85,7 @@ public class ChangePersonEmailUseCaseImpl implements ChangePersonEmailUseCase {
         var personCreationKafkaMessage = RawEmailRequest
                 .builder()
                 .keyAndValues(keyAndValues)
-                .type(EmailRequestType.EMAIL_CHANGE)
+                .type(EmailRequestType.EMAIL_CHANGED)
                 .build();
 
         dispatchEmailValidationKafkaMessageUseCase.execute(personCreationKafkaMessage);

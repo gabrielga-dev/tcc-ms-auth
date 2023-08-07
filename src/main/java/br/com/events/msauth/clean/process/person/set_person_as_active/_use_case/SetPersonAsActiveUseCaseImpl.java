@@ -1,8 +1,8 @@
-package br.com.events.msauth.legacy.application.useCase.person;
+package br.com.events.msauth.clean.process.person.set_person_as_active._use_case;
 
 import br.com.events.msauth.clean.domain.exception._process.person.NoPersonFoundByGivenUuidException;
+import br.com.events.msauth.clean.process.person.set_person_as_active._use_case.interfaces.SetPersonAsActiveUseCase;
 import br.com.events.msauth.legacy.domain.repository.PersonRepository;
-import br.com.events.msauth.legacy.infrastructure.useCase.person.SetValidStatusOnPersonByEmailValidationsUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -15,24 +15,21 @@ import java.util.Objects;
  */
 @Component
 @RequiredArgsConstructor
-public class SetValidStatusOnPersonByEmailValidationsUseCaseImpl implements
-    SetValidStatusOnPersonByEmailValidationsUseCase {
+public class SetPersonAsActiveUseCaseImpl implements SetPersonAsActiveUseCase {
 
     private final PersonRepository personRepository;
 
     @Override
-    public Void execute(final String personUuid) {
+    public void execute(final String personUuid) {
         var personFound = personRepository.findById(personUuid)
-            .orElseThrow(NoPersonFoundByGivenUuidException::new);
+                .orElseThrow(NoPersonFoundByGivenUuidException::new);
 
         var validStatus = personFound.getEmailConfirmations()
-            .stream()
-            .allMatch(validation -> validation.getValidated() && Objects.nonNull(validation.getValidationDate()));
+                .stream()
+                .allMatch(validation -> validation.getValidated() && Objects.nonNull(validation.getValidationDate()));
 
         personFound.setActive(validStatus);
 
         personRepository.save(personFound);
-
-        return null;
     }
 }

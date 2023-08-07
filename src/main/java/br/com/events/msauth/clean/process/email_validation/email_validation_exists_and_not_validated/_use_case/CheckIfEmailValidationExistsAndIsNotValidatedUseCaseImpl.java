@@ -1,8 +1,8 @@
-package br.com.events.msauth.legacy.application.useCase.emailValidation;
+package br.com.events.msauth.clean.process.email_validation.email_validation_exists_and_not_validated._use_case;
 
 import br.com.events.msauth.clean.domain.exception._process.email_validation.find_by_uuid.EmailValidationNotFoundException;
+import br.com.events.msauth.clean.process.email_validation.email_validation_exists_and_not_validated._use_case.interfaces.CheckIfEmailValidationExistsAndIsNotValidatedUseCase;
 import br.com.events.msauth.legacy.domain.repository.EmailValidationRepository;
-import br.com.events.msauth.legacy.infrastructure.useCase.emailConfirmation.CheckIfEmailValidationExistsAndIsNotValidatedUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -14,17 +14,15 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 public class CheckIfEmailValidationExistsAndIsNotValidatedUseCaseImpl implements
-    CheckIfEmailValidationExistsAndIsNotValidatedUseCase {
+        CheckIfEmailValidationExistsAndIsNotValidatedUseCase {
 
     private final EmailValidationRepository repository;
 
     @Override
-    public Void execute(final String param) {
+    public void execute(final String param) {
         repository.findByUuidAndValidatedIsFalse(param)
-            .orElseThrow(
-                EmailValidationNotFoundException::new
-            );
-
-        return null;
+                .orElseThrow(
+                        EmailValidationNotFoundException::new
+                );
     }
 }
