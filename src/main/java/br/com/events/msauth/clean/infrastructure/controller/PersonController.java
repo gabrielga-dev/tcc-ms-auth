@@ -14,12 +14,11 @@ import br.com.events.msauth.clean.process.person.create._use_case.interfaces.Cre
 import br.com.events.msauth.clean.process.person.generate_token._use_case.interfaces.GeneratePersonTokenUseCase;
 import br.com.events.msauth.clean.process.person.update._use_case.interfaces.UpdatePersonUseCase;
 import br.com.events.msauth.clean.infrastructure.controller.entity.person.change_email.in.ChangePersonEmailForm;
-import br.com.events.msauth.legacy.domain.form.person.getAuthenticatedPersonInformation.out.GetAuthenticatedPersonInformationResult;
+import br.com.events.msauth.clean.infrastructure.controller.entity.person.get_authenticated_person.out.GetAuthenticatedPersonInformationResult;
 import br.com.events.msauth.legacy.domain.mapper.person.AddServiceToPersonUseCaseMapper;
-import br.com.events.msauth.legacy.domain.mapper.person.GetAuthenticatedPersonInformationUseCaseMapper;
 import br.com.events.msauth.legacy.infrastructure.useCase.person.AddServiceToPersonUseCase;
 import br.com.events.msauth.legacy.infrastructure.useCase.person.CheckIfPersonIsServiceOwnerUseCase;
-import br.com.events.msauth.legacy.infrastructure.useCase.person.GetAuthenticatedPersonInformationUseCase;
+import br.com.events.msauth.clean.process.person.get_authenticated_person._use_case.interfaces.GetAuthenticatedPersonInformationUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -112,10 +111,8 @@ public class PersonController implements PersonControllerDoc {
     @Override
     @GetMapping
     public ResponseEntity<GetAuthenticatedPersonInformationResult> getAuthenticatedPersonInformation() {
-        var result = getAuthenticatedPersonInformationUseCase.execute(null);
-        var mappedResult = GetAuthenticatedPersonInformationUseCaseMapper.convertToResult(result);
-
-        return ResponseEntity.ok(mappedResult);
+        var result = getAuthenticatedPersonInformationUseCase.execute();
+        return ResponseEntity.ok(result);
     }
 
     @Override

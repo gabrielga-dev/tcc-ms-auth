@@ -1,9 +1,9 @@
-package br.com.events.msauth.legacy.application.useCase.person;
+package br.com.events.msauth.clean.process.person.get_authenticated_person._use_case;
 
+import br.com.events.msauth.clean.infrastructure.controller.entity.person.get_authenticated_person.out.GetAuthenticatedPersonInformationResult;
 import br.com.events.msauth.clean.process.authentication.service.AuthenticationService;
-import br.com.events.msauth.legacy.domain.form.person.getAuthenticatedPersonInformation.out.GetAuthenticatedPersonInformationUseCaseResult;
-import br.com.events.msauth.legacy.domain.mapper.person.GetAuthenticatedPersonInformationUseCaseMapper;
-import br.com.events.msauth.legacy.infrastructure.useCase.person.GetAuthenticatedPersonInformationUseCase;
+import br.com.events.msauth.clean.process.person.get_authenticated_person._use_case.interfaces.GetAuthenticatedPersonInformationUseCase;
+import br.com.events.msauth.clean.process.person.get_authenticated_person.mapper.GetAuthenticatedPersonInformationMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -20,9 +20,9 @@ public class GetAuthenticatedPersonInformationUseCaseImpl implements GetAuthenti
     private final AuthenticationService authenticationService;
 
     @Override
-    public GetAuthenticatedPersonInformationUseCaseResult execute(final Void param) {
+    public GetAuthenticatedPersonInformationResult execute() {
         var authenticatedPerson = authenticationService.getAuthenticatedPerson();
 
-        return GetAuthenticatedPersonInformationUseCaseMapper.convertToResult(authenticatedPerson);
+        return GetAuthenticatedPersonInformationMapper.convertToResult(authenticatedPerson);
     }
 }

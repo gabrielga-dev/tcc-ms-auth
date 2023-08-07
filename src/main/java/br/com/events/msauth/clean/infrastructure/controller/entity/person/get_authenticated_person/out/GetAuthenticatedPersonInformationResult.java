@@ -1,4 +1,4 @@
-package br.com.events.msauth.legacy.domain.form.person.getAuthenticatedPersonInformation.out;
+package br.com.events.msauth.clean.infrastructure.controller.entity.person.get_authenticated_person.out;
 
 import lombok.Builder;
 import lombok.Getter;
