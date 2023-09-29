@@ -21,6 +21,7 @@ import br.com.events.msauth.process.person.update._use_case.interfaces.UpdatePer
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,6 +40,7 @@ import java.net.URI;
  *
  * @author Gabriel Guimarães de Almeida
  */
+@CrossOrigin
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(value = "/v1/person")
