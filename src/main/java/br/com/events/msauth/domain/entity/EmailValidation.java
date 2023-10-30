@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -45,12 +47,23 @@ public class EmailValidation {
     @Column(name = "type", nullable = false)
     private EmailValidationType type;
 
+    @CreationTimestamp
     @Column(name = "creation_date", nullable = false)
     private LocalDateTime creationDate;
 
+    @UpdateTimestamp
     @Column(name = "validation_date")
     private LocalDateTime validationDate;
 
     @Column(name = "validated", nullable = false)
     private Boolean validated = Boolean.FALSE;
+
+    public EmailValidation(Person createdPerson, EmailValidationType emailValidationType) {
+        this.person = createdPerson;
+        this.type = emailValidationType;
+    }
+
+    public boolean isValidated(){
+        return this.validated;
+    }
 }

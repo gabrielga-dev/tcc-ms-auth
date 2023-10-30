@@ -1,7 +1,6 @@
 package br.com.events.msauth.domain.entity.pk;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,7 +18,6 @@ import java.io.Serializable;
  */
 @Getter
 @Setter
-@Builder
 @Embeddable
 @EqualsAndHashCode
 @NoArgsConstructor

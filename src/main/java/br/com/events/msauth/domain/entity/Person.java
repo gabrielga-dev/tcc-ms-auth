@@ -1,9 +1,12 @@
 package br.com.events.msauth.domain.entity;
 
 import br.com.events.msauth.domain.entity.type.EmailValidationType;
+import br.com.events.msauth.domain.io.person.create.in.CreatePersonRequest;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -15,6 +18,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -54,9 +59,11 @@ public class Person implements UserDetails {
     @Column(name = "password", nullable = false)
     private String password;
 
+    @CreationTimestamp
     @Column(name = "creation_date", nullable = false)
     private LocalDateTime creationDate;
 
+    @UpdateTimestamp
     @Column(name = "update_date")
     private LocalDateTime updateDate;
 
@@ -72,6 +79,24 @@ public class Person implements UserDetails {
         joinColumns = @JoinColumn(name = "person_uuid"),
         inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
+
+    public Person(CreatePersonRequest request, String encryptedPassword, Role role) {
+        this.firstName = request.getFirstName();
+        this.lastName = request.getLastName();
+        this.cpf = request.getCpf();
+        this.email = request.getEmail();
+        this.password = encryptedPassword;
+        this.roles = Set.of(role);
+    }
+    @PrePersist
+    protected void onCreate() {
+        creationDate = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        updateDate = LocalDateTime.now();
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -104,7 +129,7 @@ public class Person implements UserDetails {
             .filter(
                 confirmation -> EmailValidationType.PERSON_CREATION.equals(confirmation.getType())
             ).allMatch(
-                EmailValidation::getValidated
+                EmailValidation::isValidated
             );
     }
 }
