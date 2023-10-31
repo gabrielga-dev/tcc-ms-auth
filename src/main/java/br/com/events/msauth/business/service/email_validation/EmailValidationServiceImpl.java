@@ -66,7 +66,7 @@ public class EmailValidationServiceImpl implements EmailValidationService {
 
         //send email
         var emailRequest = buildEmailRequestUseCase.fromChangePasswordRequest(emailValidation.getUuid(), person);
-        sendEmailRequestUseCase.fromPasswordChangeRequest(emailRequest);
+        sendEmailRequestUseCase.send(emailRequest);
     }
 
     @Override
@@ -77,6 +77,6 @@ public class EmailValidationServiceImpl implements EmailValidationService {
 
         //send email
         var emailRequest = buildEmailRequestUseCase.fromEmailChange(emailValidation.getUuid(), person);
-        sendEmailRequestUseCase.fromEmailChange(emailRequest);
+        sendEmailRequestUseCase.send(emailRequest);
     }
 }

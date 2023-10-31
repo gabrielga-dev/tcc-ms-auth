@@ -96,7 +96,7 @@ public class PersonServiceImpl implements PersonService {
 
         //send email
         var emailRequest = buildEmailRequestUseCase.fromPersonCreation(saved, creationValidationEmail);
-        sendEmailRequestUseCase.fromPersonCreation(emailRequest);
+        sendEmailRequestUseCase.send(emailRequest);
     }
 
     @Override
@@ -183,7 +183,7 @@ public class PersonServiceImpl implements PersonService {
 
         //send email
         var emailRequest = buildEmailRequestUseCase.fromEmailChanged(emailValidationUuid, person);
-        sendEmailRequestUseCase.fromEmailChanged(emailRequest);
+        sendEmailRequestUseCase.send(emailRequest);
     }
 
     @Override
