@@ -134,6 +134,7 @@
                 </configuration>
             </plugin>
         </plugins>
+        <finalName>my-events-ms-auth-docker</finalName>
     </build>
 
 </project>
