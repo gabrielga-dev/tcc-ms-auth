@@ -18,6 +18,7 @@ public class SendEmailRequestUseCase {
     private final SqsMessageSender messageSender;
 
     public void send(RawEmailRequest emailRequest){
+        log.info("Email sent! {}", emailRequest);
         messageSender.send(endpoint, emailRequest);
     }
 }

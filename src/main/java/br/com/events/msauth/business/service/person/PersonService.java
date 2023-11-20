@@ -7,7 +7,7 @@ import br.com.events.msauth.domain.io.person.change_password.in.ChangePasswordFo
 import br.com.events.msauth.domain.io.person.create.in.CreatePersonRequest;
 import br.com.events.msauth.domain.io.person.generate_token.in.GenerateTokenRequest;
 import br.com.events.msauth.domain.io.person.generate_token.out.GenerateTokenResponse;
-import br.com.events.msauth.domain.io.person.get_authenticated_person.out.AuthenticatedPersonResponse;
+import br.com.events.msauth.domain.io.person.get_authenticated_person.out.PersonResponse;
 import br.com.events.msauth.domain.io.person.update.in.UpdatePersonRequest;
 
 public interface PersonService {
@@ -22,9 +22,11 @@ public interface PersonService {
 
     void changeEmail(String emailValidationUuid, ChangePersonEmailRequest request);
 
-    AuthenticatedPersonResponse getAuthenticatedPerson();
+    PersonResponse getAuthenticatedPerson();
 
     void addServiceToPerson(String serviceUuid, ServiceType serviceType);
 
     void checkIfPersonIsServiceOwner(ServiceType serviceType, String serviceUuid);
+
+    PersonResponse findByCpf(String personCpf);
 }

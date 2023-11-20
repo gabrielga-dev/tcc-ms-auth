@@ -7,7 +7,7 @@ import br.com.events.msauth.domain.io.person.change_password.in.ChangePasswordFo
 import br.com.events.msauth.domain.io.person.create.in.CreatePersonRequest;
 import br.com.events.msauth.domain.io.person.generate_token.in.GenerateTokenRequest;
 import br.com.events.msauth.domain.io.person.generate_token.out.GenerateTokenResponse;
-import br.com.events.msauth.domain.io.person.get_authenticated_person.out.AuthenticatedPersonResponse;
+import br.com.events.msauth.domain.io.person.get_authenticated_person.out.PersonResponse;
 import br.com.events.msauth.domain.io.person.update.in.UpdatePersonRequest;
 import br.com.events.msauth.domain.io.person.update.out.UpdatePersonResult;
 import io.swagger.annotations.Api;
@@ -40,7 +40,7 @@ public interface PersonControllerDoc {
     ResponseEntity<UpdatePersonResult> changeEmail(String personUuid, ChangePersonEmailRequest changePersonEmailRequest);
 
     @ApiOperation(value = "Get the information of the authenticated person")
-    ResponseEntity<AuthenticatedPersonResponse> getAuthenticatedPersonInformation();
+    ResponseEntity<PersonResponse> getAuthenticatedPersonInformation();
 
 
     @ApiOperation(value = "Add the given service to the authenticated person")
@@ -49,4 +49,8 @@ public interface PersonControllerDoc {
 
     @ApiOperation(value = "Check if the authenticated person is the owner of the given service")
     ResponseEntity<Void> checkIfPersonIsServiceOwner(ServiceType serviceType, String serviceUuid);
+
+
+    @ApiOperation(value = "Find a person by it's CPF")
+    ResponseEntity<PersonResponse> findByCpf(String personCpf);
 }
