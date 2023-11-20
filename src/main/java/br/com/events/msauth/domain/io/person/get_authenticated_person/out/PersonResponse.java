@@ -11,7 +11,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class AuthenticatedPersonResponse {
+public class PersonResponse {
 
     private String uuid;
     private String firstName;
@@ -19,7 +19,7 @@ public class AuthenticatedPersonResponse {
     private String email;
     private String cpf;
 
-    public AuthenticatedPersonResponse(Person authenticatedPerson) {
+    public PersonResponse(Person authenticatedPerson) {
         this.uuid = authenticatedPerson.getUuid();
         this.firstName = authenticatedPerson.getFirstName();
         this.lastName = authenticatedPerson.getLastName();

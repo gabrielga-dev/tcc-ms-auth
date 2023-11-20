@@ -5,6 +5,7 @@ import br.com.events.msauth.business.exception.email_validation.EmailValidationN
 import br.com.events.msauth.business.exception.person.ChangePasswordPasswordEqualityException;
 import br.com.events.msauth.business.exception.person.CpfNotAvailableException;
 import br.com.events.msauth.business.exception.person.EmailNotAvailableException;
+import br.com.events.msauth.business.exception.person.NoPersonFoundByGivenCpfException;
 import br.com.events.msauth.business.exception.person.NoPersonFoundByGivenUuidException;
 import br.com.events.msauth.business.exception.person.NotAbleToUpdateOtherPersonInformationException;
 import br.com.events.msauth.business.exception.person.PasswordNotEqualException;
@@ -30,7 +31,7 @@ import br.com.events.msauth.domain.io.person.change_password.in.ChangePasswordFo
 import br.com.events.msauth.domain.io.person.create.in.CreatePersonRequest;
 import br.com.events.msauth.domain.io.person.generate_token.in.GenerateTokenRequest;
 import br.com.events.msauth.domain.io.person.generate_token.out.GenerateTokenResponse;
-import br.com.events.msauth.domain.io.person.get_authenticated_person.out.AuthenticatedPersonResponse;
+import br.com.events.msauth.domain.io.person.get_authenticated_person.out.PersonResponse;
 import br.com.events.msauth.domain.io.person.update.in.UpdatePersonRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -187,9 +188,9 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public AuthenticatedPersonResponse getAuthenticatedPerson() {
+    public PersonResponse getAuthenticatedPerson() {
         var authenticatedPerson = authenticationService.getAuthenticatedPerson();
-        return new AuthenticatedPersonResponse(authenticatedPerson);
+        return new PersonResponse(authenticatedPerson);
     }
 
     @Override
@@ -207,5 +208,12 @@ public class PersonServiceImpl implements PersonService {
         if (!Objects.equals(service.getType(), serviceType)) {
             throw new PersonIsNotTheServiceOwnerException();
         }
+    }
+
+    @Override
+    public PersonResponse findByCpf(String personCpf) {
+        var person = findPersonUseCase.byCpf(personCpf).orElseThrow(NoPersonFoundByGivenCpfException::new);
+
+        return new PersonResponse(person);
     }
 }

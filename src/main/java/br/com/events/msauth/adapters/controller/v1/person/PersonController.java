@@ -8,7 +8,7 @@ import br.com.events.msauth.domain.io.person.change_password.in.ChangePasswordFo
 import br.com.events.msauth.domain.io.person.create.in.CreatePersonRequest;
 import br.com.events.msauth.domain.io.person.generate_token.in.GenerateTokenRequest;
 import br.com.events.msauth.domain.io.person.generate_token.out.GenerateTokenResponse;
-import br.com.events.msauth.domain.io.person.get_authenticated_person.out.AuthenticatedPersonResponse;
+import br.com.events.msauth.domain.io.person.get_authenticated_person.out.PersonResponse;
 import br.com.events.msauth.domain.io.person.update.in.UpdatePersonRequest;
 import br.com.events.msauth.domain.io.person.update.out.UpdatePersonResult;
 import lombok.RequiredArgsConstructor;
@@ -98,7 +98,7 @@ public class PersonController implements PersonControllerDoc {
 
     @Override
     @GetMapping
-    public ResponseEntity<AuthenticatedPersonResponse> getAuthenticatedPersonInformation() {
+    public ResponseEntity<PersonResponse> getAuthenticatedPersonInformation() {
         var result = service.getAuthenticatedPerson();
         return ResponseEntity.ok(result);
     }
@@ -120,5 +120,13 @@ public class PersonController implements PersonControllerDoc {
     ) {
         service.checkIfPersonIsServiceOwner(serviceType, serviceUuid);
         return ResponseEntity.noContent().build();
+    }
+
+    @Override
+    @GetMapping("/cpf/{personCpf}")
+    public ResponseEntity<PersonResponse> findByCpf(@PathVariable("personCpf") String personCpf) {
+        var person = service.findByCpf(personCpf);
+
+        return ResponseEntity.ok(person);
     }
 }
