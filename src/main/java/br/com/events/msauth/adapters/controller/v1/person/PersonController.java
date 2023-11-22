@@ -9,6 +9,7 @@ import br.com.events.msauth.domain.io.person.create.in.CreatePersonRequest;
 import br.com.events.msauth.domain.io.person.generate_token.in.GenerateTokenRequest;
 import br.com.events.msauth.domain.io.person.generate_token.out.GenerateTokenResponse;
 import br.com.events.msauth.domain.io.person.get_authenticated_person.out.PersonResponse;
+import br.com.events.msauth.domain.io.person.get_authenticated_person.out.PersonWithRolesResponse;
 import br.com.events.msauth.domain.io.person.update.in.UpdatePersonRequest;
 import br.com.events.msauth.domain.io.person.update.out.UpdatePersonResult;
 import lombok.RequiredArgsConstructor;
@@ -98,7 +99,7 @@ public class PersonController implements PersonControllerDoc {
 
     @Override
     @GetMapping
-    public ResponseEntity<PersonResponse> getAuthenticatedPersonInformation() {
+    public ResponseEntity<PersonWithRolesResponse> getAuthenticatedPersonInformation() {
         var result = service.getAuthenticatedPerson();
         return ResponseEntity.ok(result);
     }

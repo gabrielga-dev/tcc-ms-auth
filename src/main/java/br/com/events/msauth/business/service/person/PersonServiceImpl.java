@@ -32,6 +32,7 @@ import br.com.events.msauth.domain.io.person.create.in.CreatePersonRequest;
 import br.com.events.msauth.domain.io.person.generate_token.in.GenerateTokenRequest;
 import br.com.events.msauth.domain.io.person.generate_token.out.GenerateTokenResponse;
 import br.com.events.msauth.domain.io.person.get_authenticated_person.out.PersonResponse;
+import br.com.events.msauth.domain.io.person.get_authenticated_person.out.PersonWithRolesResponse;
 import br.com.events.msauth.domain.io.person.update.in.UpdatePersonRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -188,9 +189,9 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public PersonResponse getAuthenticatedPerson() {
+    public PersonWithRolesResponse getAuthenticatedPerson() {
         var authenticatedPerson = authenticationService.getAuthenticatedPerson();
-        return new PersonResponse(authenticatedPerson);
+        return new PersonWithRolesResponse(authenticatedPerson);
     }
 
     @Override

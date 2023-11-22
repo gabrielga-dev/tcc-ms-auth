@@ -8,6 +8,7 @@ import br.com.events.msauth.domain.io.person.create.in.CreatePersonRequest;
 import br.com.events.msauth.domain.io.person.generate_token.in.GenerateTokenRequest;
 import br.com.events.msauth.domain.io.person.generate_token.out.GenerateTokenResponse;
 import br.com.events.msauth.domain.io.person.get_authenticated_person.out.PersonResponse;
+import br.com.events.msauth.domain.io.person.get_authenticated_person.out.PersonWithRolesResponse;
 import br.com.events.msauth.domain.io.person.update.in.UpdatePersonRequest;
 import br.com.events.msauth.domain.io.person.update.out.UpdatePersonResult;
 import io.swagger.annotations.Api;
@@ -40,7 +41,7 @@ public interface PersonControllerDoc {
     ResponseEntity<UpdatePersonResult> changeEmail(String personUuid, ChangePersonEmailRequest changePersonEmailRequest);
 
     @ApiOperation(value = "Get the information of the authenticated person")
-    ResponseEntity<PersonResponse> getAuthenticatedPersonInformation();
+    ResponseEntity<PersonWithRolesResponse> getAuthenticatedPersonInformation();
 
 
     @ApiOperation(value = "Add the given service to the authenticated person")
