@@ -78,7 +78,7 @@ public class PersonServiceImpl implements PersonService {
                             throw new CpfNotAvailableException();
                         }
                 );
-        findPersonUseCase.byCpf(request.getEmail())
+        findPersonUseCase.byEmail(request.getEmail())
                 .ifPresent(
                         p -> {
                             throw new EmailNotAvailableException();
