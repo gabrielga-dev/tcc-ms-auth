@@ -109,19 +109,10 @@ public class PersonServiceImpl implements PersonService {
             throw new NotAbleToUpdateOtherPersonInformationException();
         }
         var person = findPersonUseCase.byUuid(personUuid).orElseThrow(NoPersonFoundByGivenUuidException::new);
-        if (!person.getCpf().equals(updatePersonRequest.getCpf())) {
-            findPersonUseCase.byCpf(updatePersonRequest.getCpf())
-                    .ifPresent(
-                            p -> {
-                                throw new CpfNotAvailableException();
-                            }
-                    );
-        }
 
         //update
         person.setFirstName(updatePersonRequest.getFirstName());
         person.setLastName(updatePersonRequest.getLastName());
-        person.setCpf(updatePersonRequest.getCpf());
         savePersonUseCase.execute(person);
     }
 
