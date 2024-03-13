@@ -105,6 +105,12 @@
             <version>2.2.6.RELEASE</version>
         </dependency>
 
+        <!--    FEIGN CLIENTS    -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+
     </dependencies>
 
     <dependencyManagement>

@@ -2,6 +2,7 @@ package br.com.events.msauth.business.service.email_validation;
 
 import br.com.events.msauth.business.exception.email_validation.EmailValidationNotFoundException;
 import br.com.events.msauth.business.exception.person.NoPersonFoundByGivenEmailException;
+import br.com.events.msauth.business.process.person.PersonRoleActivationProcessCaller;
 import br.com.events.msauth.business.use_case.email_request.BuildEmailRequestUseCase;
 import br.com.events.msauth.business.use_case.email_request.SendEmailRequestUseCase;
 import br.com.events.msauth.business.use_case.email_validation.CreateEmailValidationUseCase;
@@ -29,6 +30,8 @@ public class EmailValidationServiceImpl implements EmailValidationService {
     private final BuildEmailRequestUseCase buildEmailRequestUseCase;
     private final SendEmailRequestUseCase sendEmailRequestUseCase;
 
+    private final PersonRoleActivationProcessCaller personRoleActivationProcessCaller;
+
     @Override
     public void checkIfEmailValidationExistsAndNotValidated(String emailValidationUuid) {
         var emailValidation = findEmailValidationUseCase.byUuid(emailValidationUuid)
@@ -55,7 +58,11 @@ public class EmailValidationServiceImpl implements EmailValidationService {
         person.setActive(validationStatus);
 
         //save person
-        savePersonUseCase.execute(person);
+        person = savePersonUseCase.execute(person);
+
+        if (EmailValidationType.PERSON_CREATION.equals(type)){
+            personRoleActivationProcessCaller.submitToProcesses(person);
+        }
     }
 
     @Override

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class SendEmailRequestUseCase {
 
-    @Value("${cloud.aws.endpoint.uri}")
+    @Value("${cloud.aws.endpoint.uri.email-request}")
     private String endpoint;
 
     private final SqsMessageSender messageSender;
