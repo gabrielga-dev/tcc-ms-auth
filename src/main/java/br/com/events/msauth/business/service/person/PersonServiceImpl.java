@@ -10,6 +10,7 @@ import br.com.events.msauth.business.exception.person.NoPersonFoundByGivenUuidEx
 import br.com.events.msauth.business.exception.person.NotAbleToUpdateOtherPersonInformationException;
 import br.com.events.msauth.business.exception.person.PasswordNotEqualException;
 import br.com.events.msauth.business.exception.person.PersonIsNotTheServiceOwnerException;
+import br.com.events.msauth.business.process.person.PersonActionProcessCaller;
 import br.com.events.msauth.business.service.auth.AuthenticationService;
 import br.com.events.msauth.business.service.jwt.JwtTokenService;
 import br.com.events.msauth.business.use_case.email_request.BuildEmailRequestUseCase;
@@ -34,6 +35,8 @@ import br.com.events.msauth.domain.io.person.generate_token.out.GenerateTokenRes
 import br.com.events.msauth.domain.io.person.get_authenticated_person.out.PersonResponse;
 import br.com.events.msauth.domain.io.person.get_authenticated_person.out.PersonWithRolesResponse;
 import br.com.events.msauth.domain.io.person.update.in.UpdatePersonRequest;
+import br.com.events.msauth.domain.io.process.ProcessActionType;
+import br.com.events.msauth.domain.io.process.ProcessDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -68,6 +71,8 @@ public class PersonServiceImpl implements PersonService {
 
     private final BuildEmailRequestUseCase buildEmailRequestUseCase;
     private final SendEmailRequestUseCase sendEmailRequestUseCase;
+
+    private final PersonActionProcessCaller personRoleActivationProcessCaller;
 
     @Override
     public void createPerson(CreatePersonRequest request, PersonRoleEnum roleEnum) {
@@ -114,6 +119,9 @@ public class PersonServiceImpl implements PersonService {
         person.setFirstName(updatePersonRequest.getFirstName());
         person.setLastName(updatePersonRequest.getLastName());
         savePersonUseCase.execute(person);
+
+        var dto = new ProcessDTO<>(ProcessActionType.PERSON_UPDATE, person);
+        personRoleActivationProcessCaller.submitToProcesses(dto);
     }
 
     @Override
@@ -177,6 +185,9 @@ public class PersonServiceImpl implements PersonService {
         //send email
         var emailRequest = buildEmailRequestUseCase.fromEmailChanged(emailValidationUuid, person);
         sendEmailRequestUseCase.send(emailRequest);
+
+        var dto = new ProcessDTO<>(ProcessActionType.EMAIL_CHANGE, person);
+        personRoleActivationProcessCaller.submitToProcesses(dto);
     }
 
     @Override

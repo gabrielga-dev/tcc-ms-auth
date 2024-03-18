@@ -1,7 +1,7 @@
-package br.com.events.msauth.business.process.person.impl.caller;
+package br.com.events.msauth.business.process.person.impl.actions.email_confirmation.impl.caller;
 
-import br.com.events.msauth.business.process.person.PersonRoleActivationProcess;
-import br.com.events.msauth.business.process.person.PersonRoleActivationProcessCaller;
+import br.com.events.msauth.business.process.person.impl.actions.email_confirmation.PersonRoleActivationProcess;
+import br.com.events.msauth.business.process.person.impl.actions.email_confirmation.PersonRoleActivationProcessCaller;
 import br.com.events.msauth.domain.entity.Person;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

@@ -2,7 +2,7 @@ package br.com.events.msauth.business.service.email_validation;
 
 import br.com.events.msauth.business.exception.email_validation.EmailValidationNotFoundException;
 import br.com.events.msauth.business.exception.person.NoPersonFoundByGivenEmailException;
-import br.com.events.msauth.business.process.person.PersonRoleActivationProcessCaller;
+import br.com.events.msauth.business.process.person.PersonActionProcessCaller;
 import br.com.events.msauth.business.use_case.email_request.BuildEmailRequestUseCase;
 import br.com.events.msauth.business.use_case.email_request.SendEmailRequestUseCase;
 import br.com.events.msauth.business.use_case.email_validation.CreateEmailValidationUseCase;
@@ -11,6 +11,8 @@ import br.com.events.msauth.business.use_case.email_validation.ValidateEmailVali
 import br.com.events.msauth.business.use_case.person.FindPersonUseCase;
 import br.com.events.msauth.business.use_case.person.SavePersonUseCase;
 import br.com.events.msauth.domain.entity.type.EmailValidationType;
+import br.com.events.msauth.domain.io.process.ProcessActionType;
+import br.com.events.msauth.domain.io.process.ProcessDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -30,7 +32,7 @@ public class EmailValidationServiceImpl implements EmailValidationService {
     private final BuildEmailRequestUseCase buildEmailRequestUseCase;
     private final SendEmailRequestUseCase sendEmailRequestUseCase;
 
-    private final PersonRoleActivationProcessCaller personRoleActivationProcessCaller;
+    private final PersonActionProcessCaller personRoleActivationProcessCaller;
 
     @Override
     public void checkIfEmailValidationExistsAndNotValidated(String emailValidationUuid) {
@@ -60,9 +62,11 @@ public class EmailValidationServiceImpl implements EmailValidationService {
         //save person
         person = savePersonUseCase.execute(person);
 
-        if (EmailValidationType.PERSON_CREATION.equals(type)){
-            personRoleActivationProcessCaller.submitToProcesses(person);
-        }
+        var dto = new ProcessDTO<>(
+                ProcessActionType.from(type).orElseThrow(),
+                person
+        );
+        personRoleActivationProcessCaller.submitToProcesses(dto);
     }
 
     @Override
@@ -77,7 +81,7 @@ public class EmailValidationServiceImpl implements EmailValidationService {
     }
 
     @Override
-    public void createEmailChangeRequest(String personUuid){
+    public void createEmailChangeRequest(String personUuid) {
         //build and save email validation
         var person = findPersonUseCase.byUuid(personUuid).orElseThrow(NoPersonFoundByGivenEmailException::new);
         var emailValidation = createEmailValidationUseCase.fromEmailChange(person);

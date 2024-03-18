@@ -1,20 +1,18 @@
-package br.com.events.msauth.business.process.person.impl.process;
+package br.com.events.msauth.business.process.person.impl.actions.person_update.impl.process;
 
-import br.com.events.msauth.business.process.person.PersonRoleActivationProcess;
+import br.com.events.msauth.business.process.person.impl.actions.person_update.PersonUpdateProcess;
 import br.com.events.msauth.business.use_case.service_types.band.MusicianUpdateRequestUseCase;
 import br.com.events.msauth.domain.entity.Person;
 import br.com.events.msauth.domain.io.person.PersonRoleEnum;
 import br.com.events.msauth.domain.io.person.service_types.band.musician.UpdateMusicianRequestMessage;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.util.Objects;
 
-@Slf4j
 @Component
 @RequiredArgsConstructor
-public class PersonMusicianCreationProcessImpl implements PersonRoleActivationProcess {
+public class PersonMusicianUpdateProcessImpl implements PersonUpdateProcess {
 
     private final MusicianUpdateRequestUseCase musicianUpdateRequestUseCase;
 
@@ -32,4 +30,3 @@ public class PersonMusicianCreationProcessImpl implements PersonRoleActivationPr
         return null;
     }
 }
-
