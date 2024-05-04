@@ -54,4 +54,8 @@ public interface PersonControllerDoc {
 
     @ApiOperation(value = "Find a person by it's CPF")
     ResponseEntity<PersonResponse> findByCpf(String personCpf);
+
+
+    @ApiOperation(value = "Find a person by it's uuid")
+    ResponseEntity<PersonResponse> findByUuid(String personUuid);
 }

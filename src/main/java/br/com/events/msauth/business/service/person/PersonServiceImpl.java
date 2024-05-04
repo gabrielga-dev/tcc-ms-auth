@@ -219,4 +219,10 @@ public class PersonServiceImpl implements PersonService {
 
         return new PersonResponse(person);
     }
+
+    @Override
+    public PersonResponse findByUuid(String personUuid) {
+        var person = findPersonUseCase.byUuid(personUuid).orElseThrow(NoPersonFoundByGivenUuidException::new);
+        return new PersonResponse(person);
+    }
 }
