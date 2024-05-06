@@ -130,4 +130,11 @@ public class PersonController implements PersonControllerDoc {
 
         return ResponseEntity.ok(person);
     }
+
+    @Override
+    @GetMapping("/uuid/{personUuid}")
+    public ResponseEntity<PersonResponse> findByUuid(@PathVariable("personUuid") String personUuid) {
+        var person = service.findByUuid(personUuid);
+        return ResponseEntity.ok(person);
+    }
 }

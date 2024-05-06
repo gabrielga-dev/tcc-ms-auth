@@ -37,6 +37,7 @@ public class SecurityConfiguration {
             .antMatchers(HttpMethod.POST, "/v1/email-validation/change-password/request").permitAll()
             .antMatchers(HttpMethod.POST, "/v1/person/token").permitAll()
             .antMatchers(HttpMethod.PATCH, "/v1/person/change-password/**").permitAll()
+            .antMatchers(HttpMethod.GET, "/v1/person/uuid/**").permitAll()
             .antMatchers(HttpMethod.GET, "/").permitAll()
             .antMatchers(HttpMethod.GET, "/v3/api-docs").permitAll()
             .antMatchers(HttpMethod.GET, "/v2/api-docs").permitAll()

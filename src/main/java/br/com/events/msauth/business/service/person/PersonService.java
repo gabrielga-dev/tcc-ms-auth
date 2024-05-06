@@ -30,4 +30,6 @@ public interface PersonService {
     void checkIfPersonIsServiceOwner(ServiceType serviceType, String serviceUuid);
 
     PersonResponse findByCpf(String personCpf);
+
+    PersonResponse findByUuid(String personUuid);
 }
